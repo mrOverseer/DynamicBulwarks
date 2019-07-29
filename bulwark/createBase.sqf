@@ -41,8 +41,18 @@ while {_isWater} do {
 
 publicVariable "bulwarkCity";
 
-//bulwarkBox addWeaponCargoGlobal["hgun_P07_F",10];
-//bulwarkBox addMagazineCargoGlobal ["16Rnd_9x21_Mag",20];
+bulwarkBox addWeaponCargoGlobal["hgun_P07_F", random 1];
+bulwarkBox addWeaponCargoGlobal["hgun_Rook40_F", random 1];
+bulwarkBox addWeaponCargoGlobal["hgun_Rook40_F", random 1];
+bulwarkBox addMagazineCargoGlobal ["30Rnd_9x21_Mag", random 4];
+bulwarkBox addMagazineCargoGlobal ["30Rnd_9x21_Mag_SMG_02_Tracer_Red", random 4];
+bulwarkBox addBackpackCargoGlobal ["ACE_TacticalLadder_Pack", 1];
+// bulwarkBox addItemCargoGlobal ["ACE_Item_HuntIR_monitor", 1];
+// TEST
+// bulwarkBox addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 5];
+// bulwarkBox addBackpackCargoGlobal ["CUP_B_AlicePack_Khaki", 3];
+// bulwarkBox addBackpackCargoGlobal ["ACE_Box_Misc", 1];
+// bulwarkBox addBackpackCargoGlobal ["Box_NATO_AmmoOrd_F", 1];
 if(BULWARK_MEDIKITS > 0) then {
 	bulwarkBox addItemCargoGlobal ["Medikit", BULWARK_MEDIKITS];
 };
@@ -50,12 +60,12 @@ if(BULWARK_MEDIKITS > 0) then {
 //Add actions to Bulwark Box
 [bulwarkBox, ["<t color='#00ffff'>" + "Pickup", "bulwark\moveBox.sqf","",1,false,false,"true","true",2.5]] remoteExec ["addAction", 0, true];
 [bulwarkBox, ["<t color='#00ff00'>" + "Shop", "[] spawn bulwark_fnc_purchaseGui; ShopCaller = _this select 1","",1.5,false,false,"true","true",2.5]] remoteExec ["addAction", 0, true];
-[bulwarkBox, ["<t color='#ff0000'>" + "Heal Yourself: 500p", "
+[bulwarkBox, ["<t color='#ff0000'>" + "Heal Yourself: 100p", "
 	_player = _this select 1;
 	_points = _player getVariable 'killPoints';
-	if (_points >= 500) then {
+	if (_points >= 100) then {
 		[_player, 0] remoteExec ['setDamage', 0, true];
-		[_player, 500] remoteExec ['killPoints_fnc_spend', 2];
+		[_player, 100] remoteExec ['killPoints_fnc_spend', 2];
 		[true] remoteExec ['disableUserInput', _player];
 		[_player, 'AinvPercMstpSnonWnonDnon_Putdown_AmovPercMstpSnonWnonDnon'] remoteExec ['switchMove', 0];
 		sleep 1;
@@ -69,7 +79,7 @@ mainZeus addCuratorEditableObjects [[bulwarkBox], true];
 //Add EH for text to explain the FAK to Medkit feature
 [bulwarkBox, ["ContainerOpened", {
 	_playerId = _this select 1;
-	["<t size = '.5'>Place 15 FAKs into the Bulwark to convert them into a Medikit</t>", 0, 1, 60, 0] remoteExec ["BIS_fnc_dynamicText", _playerId];
+	["<t size = '.5'>Place 5 FAKs into the Bulwark to convert them into a Medikit</t>", 0, 1, 60, 0] remoteExec ["BIS_fnc_dynamicText", _playerId];
 }]] remoteExec ["addEventHandler", 0, true];
 [bulwarkBox, ["ContainerClosed", {
 	_playerId = _this select 1;
@@ -133,7 +143,7 @@ _lootBoxRoom = while {true} do {
 	_lootRoom = selectRandom _lootRooms;
 	if(!isNil "_lootRoom") exitWith {_lootRoom};
 };
-lootBox = createVehicle ["Land_WoodenBox_F", _lootBoxRoom, [], 4];
+lootBox = createVehicle ["Land_PlasticCase_01_medium_F", _lootBoxRoom, [], 4];
 publicVariable "lootBox";
 [lootBox, ["<t color='#00ffff'>" + "Pickup", "bulwark\moveSpinBox.sqf"]] remoteExec ["addAction", 0, true];
 [lootBox, [

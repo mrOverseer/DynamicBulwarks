@@ -43,11 +43,17 @@ sleep 0.1;
 if (objPurchase) then {
     closeDialog 0;
 
-    // If it's a container, make sure it's empty
-    clearItemCargoGlobal shopVehic;
-    clearWeaponCargoGlobal shopVehic;
-    clearMagazineCargoGlobal shopVehic;
-    clearBackpackCargoGlobal shopVehic;
+    if ("Box_NATO_AmmoOrd_F" != _shopClass && "ACE_Box_Misc" != _shopClass) then {
+      // If it's a container, make sure it's empty
+      clearItemCargoGlobal shopVehic;
+      clearWeaponCargoGlobal shopVehic;
+      clearMagazineCargoGlobal shopVehic;
+      clearBackpackCargoGlobal shopVehic;
+    };
+
+    if ("Box_NATO_AmmoVeh_F" == _shopClass || "Box_NATO_Support_F" == _shopClass) then {
+      shopVehic allowDamage false;
+    };
 
 	[shopVehic, ShopCaller, [0,_VecRadius + 1.5,0.02], _shopDir] call build_fnc_pickup;
 };

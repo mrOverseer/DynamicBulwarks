@@ -43,7 +43,7 @@ if (!SUPPORTMENU) then {
 		SUPPORTMENU = true;
 		publicVariable 'SUPPORTMENU';
 		SatUnlocks = missionNamespace getVariable 'SatUnlocks';
-		[_player, (20 * _pointsMulti)] remoteExecCall ['killPoints_fnc_add', 2];
+		[_player, (random 100 * _pointsMulti)] remoteExecCall ['killPoints_fnc_add', 2];
 		{
 			[_x] remoteExec ['deleteVehicle', 2];
 		} forEach SatUnlocks;
@@ -91,13 +91,13 @@ _roomCount = 0;
 							case 0: {
 								_weapon = selectRandom LOOT_WEAPON_POOL;
 								_ammoArray = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines");
-								_lootHolder addMagazineCargoGlobal [selectRandom _ammoArray, 1];
+								_lootHolder addMagazineCargoGlobal [selectRandom _ammoArray, 3];
 								_lootHolder addWeaponCargoGlobal [_weapon, 1];
 							};
 							case 1: {
 								_weapon = selectRandom LOOT_WEAPON_POOL;
 								_ammoArray = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines");
-								_lootHolder addMagazineCargoGlobal [selectRandom _ammoArray, 1 + (floor random 3)];
+								_lootHolder addMagazineCargoGlobal [selectRandom _ammoArray, 1 + (floor random 5)];
 							};
 							case 2: {
 								_clothes = selectRandom LOOT_APPAREL_POOL;
@@ -122,13 +122,13 @@ _roomCount = 0;
 							case 0: {
 								_weapon = selectRandom LOOT_WHITELIST_WEAPON;
 								_ammoArray = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines");
-								_lootHolder addMagazineCargoGlobal [selectRandom _ammoArray, 1];
+								_lootHolder addMagazineCargoGlobal [selectRandom _ammoArray, 3];
 								_lootHolder addWeaponCargoGlobal [_weapon, 1];
 							};
 							case 1: {
 								_weapon = selectRandom LOOT_WHITELIST_WEAPON;
 								_ammoArray = getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines");
-								_lootHolder addMagazineCargoGlobal [selectRandom _ammoArray, 1 + (floor random 3)];
+								_lootHolder addMagazineCargoGlobal [selectRandom _ammoArray, 1 + (floor random 5)];
 							};
 							case 2: {
 								_clothes = selectRandom LOOT_WHITELIST_APPAREL;

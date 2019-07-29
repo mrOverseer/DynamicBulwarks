@@ -6,12 +6,12 @@
 *  Domain: Client
 **/
 
-_fakArr = ["FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit"];
+_fakArr = ["FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit","FirstAidKit"];
 
 while {true} do{
   _bulwarkContents = itemCargo bulwarkBox;
   _countFaks = {_x == "FirstAidKit"} count _bulwarkContents;
-  if (_countFaks >= 15) then {
+  if (_countFaks >= 5) then {
     _bulwarkContents = _bulwarkContents - _fakArr;
     clearItemCargoGlobal  bulwarkBox;
     bulwarkBox addItemCargoGlobal ["Medikit", 1];

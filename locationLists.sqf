@@ -17,7 +17,7 @@ _zoneMarkers = [];
 _allLocations = [];
 {
     _allLocations append [locationPosition _x];
-} forEach nearestLocations [[0,0,0], ["NameCity", "NameCityCapital", "Airport"], 40000];
+} forEach nearestLocations [[0,0,0], ["Name", "Strategic", "StrongpointArea", "FlatArea", "FlatAreaCity", "FlatAreaCitySmall", "CityCenter", "Airport", "NameMarine", "NameCityCapital", "NameCity", "NameVillage", "NameLocal", "Hill", "ViewPoint", "RockArea"], 40000];
 
 List_LocationMarkers = _zoneMarkers;
 List_AllCities = _allLocations;

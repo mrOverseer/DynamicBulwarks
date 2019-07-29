@@ -15,7 +15,7 @@ _closestPlayerDist = 9999;
 
 if (!(player getVariable "buildItemHeld")) then {
 
-if (_closestPlayerDist > 5) then {
+if (_closestPlayerDist > 1) then {
 
 		if (isNil "_pos") then {
 			[_object, _caller] call BIS_fnc_attachToRelative ;

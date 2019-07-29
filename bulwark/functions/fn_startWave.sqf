@@ -10,9 +10,9 @@
 ["Terminate"] remoteExec ["BIS_fnc_EGSpectator", 0];
 [] remoteExec ["killPoints_fnc_updateHud", 0];
 
-for ("_i") from 0 to 14 do {
-	if(_i > 10) then {"beep_target" remoteExec ["playsound", 0];} else {"readoutClick" remoteExec ["playsound", 0];};
-	[format ["<t>%1</t>", 15-_i], 0, 0, 1, 0] remoteExec ["BIS_fnc_dynamicText", 0];
+for ("_i") from 0 to 44 do {
+	if(_i > 15) then {"beep_target" remoteExec ["playsound", 0];} else {"readoutClick" remoteExec ["playsound", 0];};
+	[format ["<t>%1</t>", 45-_i], 0, 0, 1, 0] remoteExec ["BIS_fnc_dynamicText", 0];
 	sleep 1;
 };
 
@@ -58,9 +58,9 @@ bulwarkBox setVariable ["buildPhase", false, true];
 //determine if Special wave
 
 if (attkWave < 10) then {
-	randSpecChance = 4;
-	maxSinceSpecial = 4;
-	maxSpecialLimit = 1;
+	randSpecChance = 5;
+	maxSinceSpecial = 5;
+	maxSpecialLimit = 2;
 };
 
 if (attkWave >= 10 && attkWave < 15) then {
