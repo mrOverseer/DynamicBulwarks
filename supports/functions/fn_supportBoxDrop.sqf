@@ -24,8 +24,7 @@ if (count _targetPos == 0) then {
     _supplyBox addWeaponCargo ["arifle_AK12_GL_F", 1];
     _supplyBox addWeaponCargo ["arifle_AK12_GL_lush_F", 1];
     _supplyBox addMagazineCargo ["30Rnd_762x39_Mag_F", 15];
-    _supplyBox addMagazineCargo ["CUP_40Rnd_TE4_LRT4_Green_Tracer_762x39_RPK_M", 15];
-    _supplyBox addMagazineCargo ["75rnd_762x39_AK12_Mag_Tracer_F", 15];
+    _supplyBox addMagazineCargo ["75rnd_762x39_AK12_Mag_Tracer_F", 25];
     _supplyBox addItemCargo ["1Rnd_HE_Grenade_shell", 50];
     _supplyBox addWeaponCargo ["CUP_srifle_M14", 1];
     _supplyBox addMagazineCargo ["CUP_20Rnd_762x51_DMR", 50];
