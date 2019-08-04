@@ -42,7 +42,7 @@ while {_isWater} do {
 publicVariable "bulwarkCity";
 
 bulwarkBox addWeaponCargoGlobal["hgun_P07_F", random 1];
-bulwarkBox addWeaponCargoGlobal["hgun_Rook40_F", random 1];
+bulwarkBox addWeaponCargoGlobal["hgun_P07_F", random 1];
 bulwarkBox addMagazineCargoGlobal ["30Rnd_9x21_Mag", random 4];
 bulwarkBox addBackpackCargoGlobal ["ACE_TacticalLadder_Pack", 1];
 if(BULWARK_MEDIKITS > 0) then {
