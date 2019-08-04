@@ -43,16 +43,8 @@ publicVariable "bulwarkCity";
 
 bulwarkBox addWeaponCargoGlobal["hgun_P07_F", random 1];
 bulwarkBox addWeaponCargoGlobal["hgun_Rook40_F", random 1];
-bulwarkBox addWeaponCargoGlobal["hgun_Rook40_F", random 1];
 bulwarkBox addMagazineCargoGlobal ["30Rnd_9x21_Mag", random 4];
-bulwarkBox addMagazineCargoGlobal ["30Rnd_9x21_Mag_SMG_02_Tracer_Red", random 4];
 bulwarkBox addBackpackCargoGlobal ["ACE_TacticalLadder_Pack", 1];
-// bulwarkBox addItemCargoGlobal ["ACE_Item_HuntIR_monitor", 1];
-// TEST
-// bulwarkBox addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 5];
-// bulwarkBox addBackpackCargoGlobal ["CUP_B_AlicePack_Khaki", 3];
-// bulwarkBox addBackpackCargoGlobal ["ACE_Box_Misc", 1];
-// bulwarkBox addBackpackCargoGlobal ["Box_NATO_AmmoOrd_F", 1];
 if(BULWARK_MEDIKITS > 0) then {
 	bulwarkBox addItemCargoGlobal ["Medikit", BULWARK_MEDIKITS];
 };
