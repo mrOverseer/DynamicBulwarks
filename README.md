@@ -1,6 +1,14 @@
 # DynamicBulwarks
 
-Fork DynamicBulwarks. Changes:
+Fork DynamicBulwarks.
+
+Require:
+
+- ACE
+- CUP Weapons
+- LAGO Weapons Pack
+
+Changes:
 
 - The storage boxes have no damage
 - 5 FAKs convert a Medikit
