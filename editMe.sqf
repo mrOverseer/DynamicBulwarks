@@ -471,6 +471,7 @@ BULWARK_BUILDITEMS = [
     [7500,  "Autonomous HMG",       "B_HMG_01_A_F",                    180, 3.5,  true],
 	[10000, "Modular Bunker",       "Land_Bunker_01_Small_F",          180,   8, false],
 	[15000, "Pillbox Bunker",       "Land_PillboxBunker_01_big_F",     180,   8, false],
+	[18000, "Praetorian 1C",        "B_AAA_System_01_F",               180,   4, true],
     [20000, "Big Bunker",           "Land_Bunker_01_big_F",            180,   8, false],
 	[35000, "Bastion Tower",        "Land_Helfenburk",                   0,  20, false],
 	[50000, "Control Tower",        "Land_Airport_02_controlTower_F",    0,  20, false]
