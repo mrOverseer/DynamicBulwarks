@@ -57,7 +57,15 @@ if (objPurchase) then {
       clearBackpackCargoGlobal shopVehic;
     };
 
-    if ("Box_NATO_AmmoVeh_F" == _shopClass || "Box_NATO_Support_F" == _shopClass) then {
+    // Objects without damage
+    withoutDamage = [
+        "Box_NATO_AmmoVeh_F",
+        "Box_NATO_Support_F",
+        "Land_Cargo_Patrol_V3_F",
+        "B_AAA_System_01_F"
+    ];
+
+    if (withoutDamage find _shopClass != -1) then {
       shopVehic allowDamage false;
     };
 
