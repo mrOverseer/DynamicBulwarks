@@ -107,8 +107,6 @@ if (count _targetPos == 0) then {
   _supplyBox addBackpackCargoGlobal ["B_Carryall_mcamo", 3];
   _supplyBox addBackpackCargoGlobal ["B_Bergen_mcamo_F", 1];
 
-  // [_supplyBox] execVM "CrateFiller.sqf";
-
   [_supplyBox, ["<t color='#00ffff'>" + "Pickup", "bulwark\moveBox.sqf","",1,false,false,"true","true",0]] remoteExec ["addAction", 0, true];
 
   _supplyBox attachTo [_parachute, [0,0,0]];
