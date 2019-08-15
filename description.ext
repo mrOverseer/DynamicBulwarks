@@ -181,6 +181,7 @@ class CfgNotifications
 };
 
 #include "bulwark\dialog.hpp"
+#include "bulwark\transferDialog.hpp"
 
 
 class Params
