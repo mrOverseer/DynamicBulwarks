@@ -64,6 +64,7 @@ if(BULWARK_MEDIKITS > 0) then {
 		[false] remoteExec ['disableUserInput', _player];
 	};
 ","",1,false,false,"true","true",2.5]] remoteExec ["addAction", 0, true];
+[bulwarkBox, ["<t color='#ffa500'>" + "Transfer points", "[] spawn bulwark_fnc_transferGui; ShopCaller = _this select 1","",1.5,false,false,"true","true",2.5]] remoteExec ["addAction", 0, true];
 
 //Add Bulwark Box to Zeus
 mainZeus addCuratorEditableObjects [[bulwarkBox], true];

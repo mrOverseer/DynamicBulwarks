@@ -15,6 +15,7 @@ Changes:
 - New items into bulwark box
 - New purchase objects
 - New support box and ACE arsenal box
+- New option "Transfer points" to another player
 - Heal yourself more cheaper
 - Height when moving objects: 0.5 to 0.25
 - Closest player distance: from 5 meters to 1 meter
