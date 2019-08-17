@@ -19,7 +19,7 @@ _players = [];
 } forEach allPlayers;
 
 _player = _players select _indexPlayer;
-_quantity  = BULWARK_TRANSFERPOINT select _indexQuantity;
+_quantity = BULWARK_TRANSFERPOINT select _indexQuantity;
 
 if (player getVariable "killPoints" >= _quantity) then {
     [player, _quantity] remoteExec ["killPoints_fnc_spend", 2];
@@ -35,5 +35,6 @@ sleep 0.1;
 if (transferComplete) then {
     closeDialog 0;
     [_player, "pointsLootSound"] remoteExec ["sound_fnc_say3DGlobal", 0];
-    [format ["<t size='0.6' color='#00ff00'>Transfer %1 to %2</t>", _quantity, name _player], -0, -0.02, 5, 0.1] call BIS_fnc_dynamicText;
+    [format ["<t size='0.6' color='#00ff00'>Transfer %1 points to %2</t>", _quantity, name _player], -0, -0.02, 5, 0.1] call BIS_fnc_dynamicText;
+	[format ["<t size='0.6' color='#00ff00'>%1 points received from %2</t>", _quantity, name player], -0, -0.02, 5, 0.1] remoteExec ["BIS_fnc_dynamicText", _player];
 };
