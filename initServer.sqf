@@ -71,3 +71,6 @@ setDate [2018, 7, 1, _timeToSet, 0];
 [] execVM "hostiles\clearStuck.sqf";
 //[] execVM "hostiles\solidObjects.sqf";
 [] execVM "hostiles\moveHosToPlayer.sqf";
+
+// Platform cargo
+[] execVM "platformCargo\init.sqf";
