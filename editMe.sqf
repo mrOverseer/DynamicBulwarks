@@ -467,6 +467,7 @@ BULWARK_BUILDITEMS = [
     [2000,  "Jail",                 "Land_Mil_Guardhouse",               0,   5, false],
     [3000,  "Guard Tower",          "Land_Cargo_Patrol_V3_F",            0,   2, false],
 	[4000,  "HQ House",             "Land_Cargo_HQ_V3_F",               90,   8, false],
+	[5000,  "Cargo Platform",       "CargoPlaftorm_01_green_F",          0,   4, false],
     [7500,  "Autonomous HMG",       "B_HMG_01_A_F",                    180, 3.5,  true],
 	[10000, "Modular Bunker",       "Land_Bunker_01_Small_F",          180,   8, false],
 	[15000, "Pillbox Bunker",       "Land_PillboxBunker_01_big_F",     180,   8, false],
