@@ -14,6 +14,7 @@ _object = PLATFORM_CARGO;
 switch (_action) do {
 	case "elevator": {
 		[_object, _value] spawn platformCargo_fnc_elevator;
+		// [_object, _value] remoteExec ["platformCargo_fnc_elevator", 2];
 	};
 	case "toggle": {
 		[_object, _value, _extra] spawn platformCargo_fnc_togglePanel;

@@ -8,7 +8,7 @@ class EditorData
 	toggles=46;
 	class ItemIDProvider
 	{
-		nextID=313;
+		nextID=317;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=27;
+		nextID=43;
 	};
 	class Camera
 	{
-		pos[]={2894.3347,34.74527,2524.6021};
-		dir[]={-0.82796991,-0.56001782,-0.029083885};
-		up[]={-0.55967265,0.82848066,-0.019659793};
-		aside[]={-0.035105273,2.6263297e-007,0.99938375};
+		pos[]={2887.0605,41.141106,2527.6667};
+		dir[]={-0.77169216,-0.53745162,-0.34005433};
+		up[]={-0.4918167,0.84329456,-0.21672697};
+		aside[]={-0.40324622,2.1010637e-006,0.91509151};
 	};
 };
 binarizationWanted=0;
@@ -1309,18 +1309,18 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2876.8064,25.905285,2520.0562};
+						position[]={2876.625,25.928804,2520};
 						angles[]={0,3.4033921,0};
 					};
 					side="Empty";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						name="tower";
 					};
 					id=215;
 					type="CargoPlaftorm_01_green_F";
-					atlOffset=1.5066528;
+					atlOffset=0.02321434;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -1568,7 +1568,7 @@ class Mission
 					};
 					id=238;
 					type="Land_ConcretePanels_02_single_v2_F";
-					atlOffset=2.3384647;
+					atlOffset=2.3149452;
 				};
 				class Item2
 				{
@@ -1584,7 +1584,7 @@ class Mission
 					};
 					id=237;
 					type="Land_ConcretePanels_02_single_v2_F";
-					atlOffset=2.3384647;
+					atlOffset=2.3149452;
 				};
 				class Item3
 				{
@@ -1600,7 +1600,7 @@ class Mission
 					};
 					id=236;
 					type="Land_ConcretePanels_02_single_v2_F";
-					atlOffset=2.3384647;
+					atlOffset=2.3149452;
 				};
 				class Item4
 				{
@@ -1616,7 +1616,7 @@ class Mission
 					};
 					id=235;
 					type="Land_ConcretePanels_02_single_v2_F";
-					atlOffset=2.3384647;
+					atlOffset=2.3149452;
 				};
 				class Item5
 				{
@@ -1632,14 +1632,14 @@ class Mission
 					};
 					id=234;
 					type="Land_ConcretePanels_02_single_v2_F";
-					atlOffset=2.3384647;
+					atlOffset=2.3149452;
 				};
 				class Item6
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2875.8989,23.224968,2517.0562};
+						position[]={2883.7471,23.224968,2514.9531};
 						angles[]={0,0.26180157,0};
 					};
 					side="Empty";
@@ -1656,7 +1656,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2875.8989,26.474968,2517.0562};
+						position[]={2883.7471,26.474968,2514.9531};
 						angles[]={0,0.26180157,0};
 					};
 					side="Empty";
@@ -1666,14 +1666,14 @@ class Mission
 					};
 					id=284;
 					type="Land_Wall_IndCnc_4_F";
-					atlOffset=2.1059856;
+					atlOffset=2.1891022;
 				};
 				class Item8
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2875.8989,27.974968,2517.0562};
+						position[]={2883.7471,27.974968,2514.9531};
 						angles[]={0,0.26180157,0};
 					};
 					side="Empty";
@@ -1683,14 +1683,14 @@ class Mission
 					};
 					id=285;
 					type="Land_Wall_IndCnc_4_F";
-					atlOffset=3.6059856;
+					atlOffset=3.6891022;
 				};
 				class Item9
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2873.75,23.224968,2520.625};
+						position[]={2881.5981,23.224968,2518.522};
 						angles[]={0,1.8325982,0};
 					};
 					side="Empty";
@@ -1707,7 +1707,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2873.75,26.474968,2520.625};
+						position[]={2881.5981,26.474968,2518.522};
 						angles[]={0,1.8325982,0};
 					};
 					side="Empty";
@@ -1717,14 +1717,14 @@ class Mission
 					};
 					id=287;
 					type="Land_Wall_IndCnc_4_F";
-					atlOffset=1.9629822;
+					atlOffset=3.273325;
 				};
 				class Item11
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2873.75,27.974968,2520.625};
+						position[]={2881.5981,27.974968,2518.522};
 						angles[]={0,1.8325982,0};
 					};
 					side="Empty";
@@ -1734,7 +1734,7 @@ class Mission
 					};
 					id=288;
 					type="Land_Wall_IndCnc_4_F";
-					atlOffset=3.4629822;
+					atlOffset=4.773325;
 				};
 				class Item12
 				{
@@ -1750,11 +1750,11 @@ class Mission
 					};
 					id=312;
 					type="Land_ConcretePanels_02_single_v2_F";
-					atlOffset=2.3384647;
+					atlOffset=2.3149452;
 				};
 			};
 			id=258;
-			atlOffset=6.6359768;
+			atlOffset=6.6359844;
 		};
 		class Item14
 		{
