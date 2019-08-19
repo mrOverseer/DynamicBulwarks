@@ -8,7 +8,7 @@ class EditorData
 	toggles=46;
 	class ItemIDProvider
 	{
-		nextID=317;
+		nextID=328;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=43;
+		nextID=45;
 	};
 	class Camera
 	{
-		pos[]={2887.0605,41.141106,2527.6667};
-		dir[]={-0.77169216,-0.53745162,-0.34005433};
-		up[]={-0.4918167,0.84329456,-0.21672697};
-		aside[]={-0.40324622,2.1010637e-006,0.91509151};
+		pos[]={2889.1516,35.644878,2514.4878};
+		dir[]={-0.91437787,-0.3675701,0.1700229};
+		up[]={-0.36139515,0.92997748,0.067195565};
+		aside[]={0.18282022,2.7587521e-006,0.98320341};
 	};
 };
 binarizationWanted=0;
@@ -42,8 +42,8 @@ addons[]=
 	"A3_Modules_F_Curator_Curator",
 	"A3_Structures_F_Naval_Piers",
 	"A3_Structures_F_Enoch_Military_Camps",
-	"A3_Structures_F_Enoch_Infrastructure_Roads",
 	"A3_Structures_F_Walls",
+	"A3_Structures_F_Enoch_Infrastructure_Roads",
 	"A3_Structures_F_EPC_Dominants_GhostHotel",
 	"CUP_Buildings_Config",
 	"A3_Structures_F_Argo_Military_Bunkers"
@@ -288,7 +288,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=15;
+		items=18;
 		class Item0
 		{
 			dataType="Group";
@@ -1303,13 +1303,13 @@ class Mission
 			name="Group Tower";
 			class Entities
 			{
-				items=13;
+				items=15;
 				class Item0
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2876.625,25.928804,2520};
+						position[]={2877.0615,25.928804,2520.0125};
 						angles[]={0,3.4033921,0};
 					};
 					side="Empty";
@@ -1559,87 +1559,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2874.4692,31.995646,2520.1946};
-						angles[]={0,4.9741888,0};
-					};
-					side="Empty";
-					class Attributes
-					{
-					};
-					id=238;
-					type="Land_ConcretePanels_02_single_v2_F";
-					atlOffset=2.3149452;
-				};
-				class Item2
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2873.9829,31.995646,2518.3274};
-						angles[]={0,1.8325961,0};
-					};
-					side="Empty";
-					class Attributes
-					{
-					};
-					id=237;
-					type="Land_ConcretePanels_02_single_v2_F";
-					atlOffset=2.3149452;
-				};
-				class Item3
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2878.6975,31.995646,2521.0027};
-						angles[]={0,4.9741888,0};
-					};
-					side="Empty";
-					class Attributes
-					{
-					};
-					id=236;
-					type="Land_ConcretePanels_02_single_v2_F";
-					atlOffset=2.3149452;
-				};
-				class Item4
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2877.7258,31.995646,2517.3245};
-						angles[]={0,1.8325961,0};
-					};
-					side="Empty";
-					class Attributes
-					{
-					};
-					id=235;
-					type="Land_ConcretePanels_02_single_v2_F";
-					atlOffset=2.3149452;
-				};
-				class Item5
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2878.2122,31.995646,2519.1917};
-						angles[]={0,4.9741888,0};
-					};
-					side="Empty";
-					class Attributes
-					{
-					};
-					id=234;
-					type="Land_ConcretePanels_02_single_v2_F";
-					atlOffset=2.3149452;
-				};
-				class Item6
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2883.7471,23.224968,2514.9531};
+						position[]={2876,23.224968,2516.95};
 						angles[]={0,0.26180157,0};
 					};
 					side="Empty";
@@ -1651,12 +1571,12 @@ class Mission
 					type="Land_Wall_IndCnc_4_F";
 					atlOffset=0.023324966;
 				};
-				class Item7
+				class Item2
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2883.7471,26.474968,2514.9531};
+						position[]={2876,26.474968,2516.95};
 						angles[]={0,0.26180157,0};
 					};
 					side="Empty";
@@ -1666,14 +1586,14 @@ class Mission
 					};
 					id=284;
 					type="Land_Wall_IndCnc_4_F";
-					atlOffset=2.1891022;
+					atlOffset=2.0414677;
 				};
-				class Item8
+				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2883.7471,27.974968,2514.9531};
+						position[]={2876,27.974968,2516.95};
 						angles[]={0,0.26180157,0};
 					};
 					side="Empty";
@@ -1683,14 +1603,14 @@ class Mission
 					};
 					id=285;
 					type="Land_Wall_IndCnc_4_F";
-					atlOffset=3.6891022;
+					atlOffset=3.5414677;
 				};
-				class Item9
+				class Item4
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2881.5981,23.224968,2518.522};
+						position[]={2873.8511,23.224968,2520.5188};
 						angles[]={0,1.8325982,0};
 					};
 					side="Empty";
@@ -1702,12 +1622,12 @@ class Mission
 					type="Land_Wall_IndCnc_4_F";
 					atlOffset=0.023324966;
 				};
-				class Item10
+				class Item5
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2881.5981,26.474968,2518.522};
+						position[]={2873.8511,26.474968,2520.5188};
 						angles[]={0,1.8325982,0};
 					};
 					side="Empty";
@@ -1717,14 +1637,14 @@ class Mission
 					};
 					id=287;
 					type="Land_Wall_IndCnc_4_F";
-					atlOffset=3.273325;
+					atlOffset=2.0686092;
 				};
-				class Item11
+				class Item6
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2881.5981,27.974968,2518.522};
+						position[]={2873.8511,27.974968,2520.5188};
 						angles[]={0,1.8325982,0};
 					};
 					side="Empty";
@@ -1734,27 +1654,323 @@ class Mission
 					};
 					id=288;
 					type="Land_Wall_IndCnc_4_F";
-					atlOffset=4.773325;
+					atlOffset=3.5686092;
 				};
-				class Item12
+				class Item7
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2874.9543,31.995646,2522.0056};
+						position[]={2875.2373,31.995579,2523.0632};
 						angles[]={0,4.9741888,0};
 					};
 					side="Empty";
 					class Attributes
 					{
 					};
-					id=312;
-					type="Land_ConcretePanels_02_single_v2_F";
-					atlOffset=2.3149452;
+					id=318;
+					type="Land_ConcretePanels_02_single_v1_F";
+					atlOffset=2.3148785;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Enh_featureType";
+							expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="0";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item8
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2874.7522,31.996113,2521.2522};
+						angles[]={0,4.9741888,0};
+					};
+					side="Empty";
+					class Attributes
+					{
+					};
+					id=319;
+					type="Land_ConcretePanels_02_single_v1_F";
+					atlOffset=2.3154125;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Enh_featureType";
+							expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="0";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item9
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2874.2661,31.996042,2519.384};
+						angles[]={0,1.8325957,0};
+					};
+					side="Empty";
+					class Attributes
+					{
+					};
+					id=320;
+					type="Land_ConcretePanels_02_single_v1_F";
+					atlOffset=2.3153419;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Enh_featureType";
+							expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="0";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item10
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2878.9812,31.996141,2522.0601};
+						angles[]={0,4.9741888,0};
+					};
+					side="Empty";
+					class Attributes
+					{
+					};
+					id=321;
+					type="Land_ConcretePanels_02_single_v1_F";
+					atlOffset=2.3154411;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Enh_featureType";
+							expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="0";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item11
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2878.4951,31.995487,2520.249};
+						angles[]={0,4.9741888,0};
+					};
+					side="Empty";
+					class Attributes
+					{
+					};
+					id=322;
+					type="Land_ConcretePanels_02_single_v1_F";
+					atlOffset=2.3147869;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Enh_featureType";
+							expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="0";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item12
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2878.0093,31.996155,2518.3811};
+						angles[]={0,1.8325957,0};
+					};
+					side="Empty";
+					class Attributes
+					{
+					};
+					id=323;
+					type="Land_ConcretePanels_02_single_v1_F";
+					atlOffset=2.3154545;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Enh_featureType";
+							expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="0";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item13
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2873.7808,31.996042,2517.573};
+						angles[]={0,1.8325957,0};
+					};
+					side="Empty";
+					class Attributes
+					{
+					};
+					id=326;
+					type="Land_ConcretePanels_02_single_v1_F";
+					atlOffset=8.3106709;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Enh_featureType";
+							expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="0";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item14
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2877.5239,31.996155,2516.5701};
+						angles[]={0,1.8325957,0};
+					};
+					side="Empty";
+					class Attributes
+					{
+					};
+					id=327;
+					type="Land_ConcretePanels_02_single_v1_F";
+					atlOffset=8.3108253;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Enh_featureType";
+							expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="0";
+								};
+							};
+						};
+						nAttributes=1;
+					};
 				};
 			};
 			id=258;
-			atlOffset=6.6359844;
+			atlOffset=2.3041153;
 		};
 		class Item14
 		{
@@ -2260,6 +2476,126 @@ class Mission
 			};
 			id=305;
 			atlOffset=0.57840729;
+		};
+		class Item15
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2874.5935,30.348621,2523.3086};
+				angles[]={0,1.8325959,-0};
+			};
+			side="Empty";
+			flags=1;
+			class Attributes
+			{
+			};
+			id=317;
+			type="Land_Wall_IndCnc_Pole_F";
+			atlOffset=5.9381046;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="Enh_featureType";
+					expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="0";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item16
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2873.093,30.348621,2517.709};
+				angles[]={0,1.8325959,-0};
+			};
+			side="Empty";
+			flags=1;
+			class Attributes
+			{
+			};
+			id=324;
+			type="Land_Wall_IndCnc_Pole_F";
+			atlOffset=5.8988991;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="Enh_featureType";
+					expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="0";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item17
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2878.8225,30.348621,2516.1738};
+				angles[]={0,3.4033926,-0};
+			};
+			side="Empty";
+			flags=1;
+			class Attributes
+			{
+			};
+			id=325;
+			type="Land_Wall_IndCnc_Pole_F";
+			atlOffset=5.8989487;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="Enh_featureType";
+					expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="0";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 };
