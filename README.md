@@ -1,4 +1,4 @@
-# DynamicBulwarks
+# StaticBulwarks
 
 Fork DynamicBulwarks.
 
@@ -7,15 +7,18 @@ Require:
 - ACE
 - CUP Weapons
 - LAGO Weapons Pack
+- MAP: CUP porto
 
 Changes:
 
+- New base ready for use
 - The storage boxes have no damage
 - 5 FAKs convert a Medikit
 - New items into bulwark box
 - New purchase objects
 - New support box and ACE arsenal box
 - New option "Transfer points" to another player
+- [WIP] Script to move cargo platforms
 - Heal yourself more cheaper
 - Height when moving objects: 0.5 to 0.25
 - Closest player distance: from 5 meters to 1 meter
