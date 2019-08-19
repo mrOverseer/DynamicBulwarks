@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2889.1516,35.644878,2514.4878};
-		dir[]={-0.91437787,-0.3675701,0.1700229};
-		up[]={-0.36139515,0.92997748,0.067195565};
-		aside[]={0.18282022,2.7587521e-006,0.98320341};
+		pos[]={2889.0632,35.19405,2506.4949};
+		dir[]={-0.54814547,-0.37834054,0.74598771};
+		up[]={-0.22403978,0.92564809,0.30489644};
+		aside[]={0.80588973,2.7978967e-006,0.59216088};
 	};
 };
 binarizationWanted=0;
@@ -288,7 +288,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=18;
+		items=15;
 		class Item0
 		{
 			dataType="Group";
@@ -1303,7 +1303,7 @@ class Mission
 			name="Group Tower";
 			class Entities
 			{
-				items=15;
+				items=18;
 				class Item0
 				{
 					dataType="Object";
@@ -1968,9 +1968,129 @@ class Mission
 						nAttributes=1;
 					};
 				};
+				class Item15
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2874.5935,30.348621,2523.3086};
+						angles[]={0,1.8325959,-0};
+					};
+					side="Empty";
+					flags=1;
+					class Attributes
+					{
+					};
+					id=317;
+					type="Land_Wall_IndCnc_Pole_F";
+					atlOffset=5.9381046;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Enh_featureType";
+							expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="0";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item16
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2873.093,30.348621,2517.709};
+						angles[]={0,1.8325959,-0};
+					};
+					side="Empty";
+					flags=1;
+					class Attributes
+					{
+					};
+					id=324;
+					type="Land_Wall_IndCnc_Pole_F";
+					atlOffset=5.8988991;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Enh_featureType";
+							expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="0";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item17
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2878.8225,30.348621,2516.1738};
+						angles[]={0,3.4033926,-0};
+					};
+					side="Empty";
+					flags=1;
+					class Attributes
+					{
+					};
+					id=325;
+					type="Land_Wall_IndCnc_Pole_F";
+					atlOffset=5.8989487;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="Enh_featureType";
+							expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="0";
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
 			};
 			id=258;
-			atlOffset=2.3041153;
+			atlOffset=0.23809814;
 		};
 		class Item14
 		{
@@ -2476,126 +2596,6 @@ class Mission
 			};
 			id=305;
 			atlOffset=0.57840729;
-		};
-		class Item15
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={2874.5935,30.348621,2523.3086};
-				angles[]={0,1.8325959,-0};
-			};
-			side="Empty";
-			flags=1;
-			class Attributes
-			{
-			};
-			id=317;
-			type="Land_Wall_IndCnc_Pole_F";
-			atlOffset=5.9381046;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="Enh_featureType";
-					expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item16
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={2873.093,30.348621,2517.709};
-				angles[]={0,1.8325959,-0};
-			};
-			side="Empty";
-			flags=1;
-			class Attributes
-			{
-			};
-			id=324;
-			type="Land_Wall_IndCnc_Pole_F";
-			atlOffset=5.8988991;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="Enh_featureType";
-					expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item17
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={2878.8225,30.348621,2516.1738};
-				angles[]={0,3.4033926,-0};
-			};
-			side="Empty";
-			flags=1;
-			class Attributes
-			{
-			};
-			id=325;
-			type="Land_Wall_IndCnc_Pole_F";
-			atlOffset=5.8989487;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="Enh_featureType";
-					expression="if (_value isEqualType 0) then {_this setFeatureType _value}; if (_value isEqualType 'STRING') then {_this setFeatureType parseNumber _value}";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="0";
-						};
-					};
-				};
-				nAttributes=1;
-			};
 		};
 	};
 };
