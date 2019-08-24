@@ -16,6 +16,7 @@ Changes:
 - New purchase objects
 - New support box and ACE arsenal box
 - New option "Transfer points" to another player
+- [WIP] Script to move cargo platforms
 - Heal yourself more cheaper
 - Height when moving objects: 0.5 to 0.25
 - Closest player distance: from 5 meters to 1 meter

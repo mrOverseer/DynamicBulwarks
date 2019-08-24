@@ -61,6 +61,25 @@ _object setVehiclePosition [_object, [], 0, 'CAN_COLLIDE'],
 	]
 ] remoteExec ['addAction', 0];
 
+if (typeOf _object == "CargoPlaftorm_01_green_F") then {
+	// Update start position
+	{
+		if ((str _object splitstring ": " select 1) == _x select 0) exitWith {
+			PLATFORM_ELEVATOR_START_POSITION set [_forEachIndex, [_x select 0, getPosATL _object]];
+			publicVariable "PLATFORM_ELEVATOR_START_POSITION";
+		};
+	} forEach PLATFORM_ELEVATOR_START_POSITION;
+
+	[
+		_object,
+		[
+			"<t color='#ffa500'>" + "Platform Cargo",
+			"_this spawn platformCargo_fnc_openGui",
+			"",1.5,false,false,"true","true",9
+		]
+	] remoteExec ["addAction", 0];
+};
+
 _caller setVariable ["buildItemHeld", false, true];
 _object setVariable ["buildItemHeld", false, true];
 [mainZeus, [[_object], true]] remoteExec ["addCuratorEditableObjects", 0, true];
