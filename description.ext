@@ -41,6 +41,7 @@ class CfgFunctions
 	#include "build\Functions.hpp"
 	#include "hostiles\Functions.hpp"
 	#include "loot\Functions.hpp"
+	#include "platformCargo\Functions.hpp"
 };
 
 
@@ -165,6 +166,13 @@ class CfgSounds
 		sound[] = {"\sound\teleport.ogg", 5, 1};
 		titles[] = {0,""};
 	};
+
+	class platformCargo
+	{
+		name = "Platform Cargo";
+		sound[] = {"@A3\sounds_f\structures\doors\ServoRamp\ServoRampSlam.wss", 10, 1};
+		titles[] = {};
+	};
 };
 
 //Notification for Special Waves
@@ -182,6 +190,7 @@ class CfgNotifications
 
 #include "bulwark\dialog.hpp"
 #include "bulwark\transferDialog.hpp"
+#include "platformCargo\dialog.hpp"
 
 
 class Params
