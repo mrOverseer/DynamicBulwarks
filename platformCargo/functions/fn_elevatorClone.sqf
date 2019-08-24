@@ -105,7 +105,6 @@ while {_height < _diff} do {
 {
 	if (_objectId == _x select 0) exitWith {
 		PLATFORM_ELEVATOR_START_POSITION set [_forEachIndex, [(str _object splitstring ": " select 1), _x select 1]];
-		PLATFORM_ELEVATOR_START_POSITION deleteAt _forEachIndex;
 		publicVariable "PLATFORM_ELEVATOR_START_POSITION";
 	};
 } forEach PLATFORM_ELEVATOR_START_POSITION;
