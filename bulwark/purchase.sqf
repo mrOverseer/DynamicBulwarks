@@ -62,6 +62,8 @@ if (objPurchase) then {
         "Box_NATO_AmmoVeh_F",
         "Box_NATO_Support_F",
         "Land_Cargo_Patrol_V3_F",
+        "CargoPlaftorm_01_green_F",
+        "B_HMG_01_A_F",
         "B_AAA_System_01_F"
     ];
 
