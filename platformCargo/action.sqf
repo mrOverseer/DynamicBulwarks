@@ -9,7 +9,9 @@
 _action = _this select 0;
 _value = _this select 1;
 _extra = _this select 2;
-_object = PLATFORM_CARGO;
+
+// platform: this variable get from fn_openGui
+_object = platform;
 
 switch (_action) do {
 	case "elevator": {

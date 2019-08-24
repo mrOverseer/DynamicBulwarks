@@ -6,7 +6,7 @@
 *  Domain: Client
 **/
 
-platform = PLATFORM_CARGO;
+platform = _this select 0;
 
 disableSerialization;
 
@@ -27,7 +27,8 @@ arrayPanelRotate = [
 	_ctrl sliderSetPosition ((deg _phase / 180) * 10);
 
 	// Set event handle
-	_ctrl ctrlAddEventHandler ["SliderPosChanged",
+	_ctrl ctrlAddEventHandler [
+		"SliderPosChanged",
 		{
 			params ["_control", "_newValue"];
 			_idc = ctrlIDC _control;
@@ -58,7 +59,8 @@ arrayPanelToggle = [
 	};
 
 	// Set event handle
-	_ctrl ctrlAddEventHandler ["CheckedChanged",
+	_ctrl ctrlAddEventHandler [
+		"CheckedChanged",
 		{
 			params ["_control", "_checked"];
 			_idc = ctrlIDC _control;

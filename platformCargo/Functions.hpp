@@ -8,7 +8,7 @@ class platformCargo
         class elevatorPosition {};
         class elevatorDrone {};
         class elevatorClone {};
-        class elevatorAnimation {};
+        class elevatorTest {};
         class elevatorStatic {};
         class rotatePanel {};
         class togglePanel {};
