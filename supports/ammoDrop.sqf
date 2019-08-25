@@ -69,5 +69,5 @@ _hWeap = handgunWeapon ammoPlayer;
 if (_hWeap != "") then {
   _ammoArray = getArray (configFile >> "CfgWeapons" >> _hWeap >> "magazines");
   _ammoToAdd = selectRandom _ammoArray;
-  ammoPlayer addMagazines [_ammoToAdd, 3];
+  ammoPlayer addMagazines [_ammoToAdd, 2];
 };
