@@ -55,7 +55,7 @@ _parachute = "B_Parachute_02_F" CreateVehicle [0,0,0];
 _parachute setPos [getPos _agVehicle select 0, getPos _agVehicle select 1, (getPos _agVehicle select 2)-5];
 _supplyBox = createVehicle ["Land_WoodenCrate_01_F", [0,0,0], [], 0, "CAN_COLLIDE"];
 [_supplyBox, _cargo] remoteExec ["addAction", 0, true];
-[_supplyBox, ["<t color='#00ffff'>" + "Pickup", "bulwark\moveBox.sqf","",1,false,false,"true","true",0]] remoteExec ["addAction", 0, true];
+[_supplyBox, ["<t color='#00ffff'>" + "Pickup", "bulwark\moveBox.sqf","",1,false,false,"true","true",2.5]] remoteExec ["addAction", 0, true];
 _supplyBox attachTo [_parachute, [0,0,0]];
 _supplyBox allowDamage false;
 
