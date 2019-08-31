@@ -636,7 +636,26 @@ class RscListBox
 			1,
 			1
 		};
+		colorActive[] =
+		{
+			1,
+			1,
+			1,
+			1
+		};
+		colorDisabled[] =
+		{
+			1,
+			1,
+			1,
+			0.3
+		};
 		autoScrollEnabled = 1;
+		arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa";
+		arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
+		border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
+		thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
+		shadow = 0;
 	};
 	x = 0;
 	y = 0;
