@@ -71,9 +71,9 @@ if (objPurchase) then {
       shopVehic allowDamage false;
     };
     
-    if ("CargoPlaftorm_01_green_F" == _shopClass) then {
-        PLATFORM_ELEVATOR_START_POSITION pushBack [str shopVehic splitstring ": " select 1, getPosATL shopVehic];
-        publicVariable "PLATFORM_ELEVATOR_START_POSITION";
+    if (PC_CLASS_NAME == _shopClass) then {
+        PC_START_POSITION pushBack [str shopVehic splitstring ": " select 1, getPosATL shopVehic];
+        publicVariable "PC_START_POSITION";
     };
 
 	[shopVehic, ShopCaller, [0,_VecRadius + 1.5,0.02], _shopDir] call build_fnc_pickup;

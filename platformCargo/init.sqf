@@ -11,12 +11,14 @@
 // 3 => Clone - Destroy and create platform (MP force refresh)
 // 4 => Test (It doesn't work)
 // 5 => Static object (It doesn't work)
-PLATFORM_ELEVATOR_TYPE = 3;
-PLATFORM_ELEVATOR_LENGTH = 6.541;
-PLATFORM_ELEVATOR_STEP = 0.025;
-PLATFORM_ELEVATOR_START_POSITION = [];
+PC_TYPE = 1;
+PC_CLASS_NAME = "CargoPlaftorm_01_green_F";
+PC_ELEVATOR_LENGTH = 6.541;
+PC_ELEVATOR_STEP = 0.025;
+PC_START_POSITION = [];
 
-publicVariable "PLATFORM_ELEVATOR_TYPE";
-publicVariable "PLATFORM_ELEVATOR_LENGTH";
-publicVariable "PLATFORM_ELEVATOR_STEP";
-publicVariable "PLATFORM_ELEVATOR_START_POSITION";
+publicVariable "PC_TYPE";
+publicVariable "PC_CLASS_NAME";
+publicVariable "PC_ELEVATOR_LENGTH";
+publicVariable "PC_ELEVATOR_STEP";
+publicVariable "PC_START_POSITION";

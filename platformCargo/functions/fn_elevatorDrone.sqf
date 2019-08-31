@@ -11,7 +11,7 @@ _position = _this select 1;
 _diff = _this select 2;
 _step = _this select 3;
 
-_length = PLATFORM_ELEVATOR_LENGTH;
+_length = PC_ELEVATOR_LENGTH;
 _objectPos = getPosATL _object;
 _dir = getDir _object;
 
@@ -58,7 +58,7 @@ while {_height < _diff} do {
 	_uav flyInHeight ((_uavPos select 2) + (_i * _step));
 	diag_log(format ["height: %1 - motor: %2 - tower: %3", _height, getPosATL _uav, getPosATL _object]);
 
-	_height = _i * PLATFORM_ELEVATOR_STEP;
+	_height = _i * PC_ELEVATOR_STEP;
 	_i = _i + 1;
 	
 	_speed = 0.025;

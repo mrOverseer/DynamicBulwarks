@@ -11,7 +11,7 @@ _position = _this select 1;
 diff = _this select 2;
 _step = _this select 3;
 
-_length = PLATFORM_ELEVATOR_LENGTH;
+_length = PC_ELEVATOR_LENGTH;
 platformPos = getPosASL platform;
 
 [platform, false] remoteExec ["enableSimulation", 0];

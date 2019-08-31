@@ -7,11 +7,13 @@
 **/
 
 _object = _this select 0;
-_position = _this select 1;
-_diff = _this select 2;
-_step = _this select 3;
+_position = (_this select 1) select 0;
+_diff = (_this select 1) select 1;
+_step = (_this select 1) select 2;
+_callback = _this select 2;
 
-_length = PLATFORM_ELEVATOR_LENGTH;
+_className = PC_CLASS_NAME;
+_length = PC_ELEVATOR_LENGTH;
 _objectPos = getPosATL _object;
 _objectId = str _object splitstring ": " select 1;
 _dir = getDir _object;
@@ -21,16 +23,6 @@ sleep 0.1;
 
 [_object, false] remoteExec ["enableSimulation", 0];
 [player, "platformCargo"] remoteExec ["sound_fnc_say3DGlobal", 0];
-
-set_fn_animatePhase = {
-	private ["_object"];
-	_object = _this select 0;
-	_items = _this select 1;
-
-	{
-		_object animateSource [_x select 0, _x select 1, _x select 2];
-	} forEach _items;
-};
 
 // Save current animatePhase
 _animations = [
@@ -45,16 +37,9 @@ _animations = [
 ];
 
 // Reset animatePhase
-[_object, [
-	["Panel_1_rotate_source", 0, 1],
-	["Panel_2_rotate_source", 0, 1],
-	["Panel_3_rotate_source", 0, 1],
-	["Panel_4_rotate_source", 0, 1],
-	["Panel_1_hide_source", 0, true],
-	["Panel_2_hide_source", 0, true],
-	["Panel_3_hide_source", 0, true],
-	["Panel_4_hide_source", 0, true]
-]] spawn set_fn_animatePhase;
+{
+	_object animateSource [_x select 0, 0, _x select 2];
+} forEach _animations;
 
 waitUntil {
 	(_object animationSourcePhase "Panel_1_rotate_source") == 0 &&
@@ -69,7 +54,7 @@ while {_height < _diff} do {
 	// Destroy and create _object
 	deleteVehicle _object;
 	_object = createVehicle [
-		"CargoPlaftorm_01_green_F", [
+		_className, [
 			_objectPos select 0,
 			_objectPos select 1,
 			(_objectPos select 2) + (_i * _step)
@@ -80,9 +65,10 @@ while {_height < _diff} do {
 
 	[_object, false] remoteExec ["enableSimulation", 0];
 
-	_height = _i * PLATFORM_ELEVATOR_STEP;
+	_height = _i * PC_ELEVATOR_STEP;
 	_i = _i + 1;
 
+	// Avoid player jumps when going up / down
 	_speed = 0.025;
 	if (_step < 0) then {
 		_speed = -1.5;
@@ -104,68 +90,18 @@ while {_height < _diff} do {
 // Update the object id
 {
 	if (_objectId == _x select 0) exitWith {
-		PLATFORM_ELEVATOR_START_POSITION set [_forEachIndex, [(str _object splitstring ": " select 1), _x select 1]];
-		publicVariable "PLATFORM_ELEVATOR_START_POSITION";
+		PC_START_POSITION set [_forEachIndex, [(str _object splitstring ": " select 1), _x select 1]];
+		publicVariable "PC_START_POSITION";
 	};
-} forEach PLATFORM_ELEVATOR_START_POSITION;
+} forEach PC_START_POSITION;
 
 // Restore animatePhase
-[_object, _animations] spawn set_fn_animatePhase;
+{
+	_object animateSource [_x select 0, _x select 1, _x select 2];
+} forEach _animations;
 
 [_object, "platformCargo"] remoteExec ["sound_fnc_say3DGlobal", 0];
 [_object, true] remoteExec ["enableSimulation", 0];
 
-// Add actions
-[
-	_object,
-	[
-		'<t color="#ff0000">Remove Object</t>',
-		'[_this select 0, _this select 1] call build_fnc_sell;',
-		'', 1, false, false, 'true', 'true', 5
-	]
-] remoteExec ['addAction', 0];
-
-[
-	_object,
-	[
-		'<t color="#00ffff">Move Up</t>',
-		'[_this select 0, _this select 3, _this select 1] call build_fnc_move;',
-		[0,0,0.25],2,false,false,'true','true',5
-	]
-] remoteExec ['addAction', 0];
-
-[
-	_object,
-	[
-		'<t color="#00ff00">Move Down</t>',
-		'[_this select 0, _this select 3, _this select 1] call build_fnc_move;',
-		[0,0,-0.25],2,false,false,'true','true',5
-	]
-] remoteExec ['addAction', 0];
-
-[
-	_object,
-	[
-		'<t color="#ffffff">Pickup</t>',
-		'[_this select 0, _this select 1] call build_fnc_pickup;',
-		[0,0,0.25],2,false,false,'true','true',5
-	]
-] remoteExec ['addAction', 0];
-
-[
-	_object,
-	[
-		'<t color="#ffff00">Reset Rotation</t>',
-		'[_this select 0, _this select 1] call build_fnc_reset;',
-		[0,0,0.25],2,false,false,'true','true',5
-	]
-] remoteExec ['addAction', 0];
-
-[
-	_object,
-	[
-		"<t color='#ffa500'>" + "Platform Cargo",
-		"_this spawn platformCargo_fnc_openGui",
-		"",1.5,false,false,"true","true",9
-	]
-] remoteExec ["addAction", 0, true];
+// Call callback script
+[_object] spawn compile _callback;

@@ -13,6 +13,16 @@ disableSerialization;
 createDialog "platformCargo_Dialog";
 waitUntil {!isNull (findDisplay 7777);};
 
+_display = findDisplay 7777;
+
+_display displayAddEventHandler ["Unload", {
+	params ["_display", "_exitCode"];
+
+	if (2 == _exitCode) then {
+		[platform] spawn pc_fnc_restoreActions;
+	};
+}];
+
 arrayPanelRotate = [
 	[7102, "Panel_1_rotate_source"],
 	[7202, "Panel_2_rotate_source"],
@@ -20,7 +30,7 @@ arrayPanelRotate = [
 	[7402, "Panel_4_rotate_source"]
 ];
 {
-	_ctrl = (findDisplay 7777) displayCtrl (_x select 0);
+	_ctrl = _display displayCtrl (_x select 0);
 
 	// Set value
 	_phase = platform animationSourcePhase (_x select 1);
@@ -48,7 +58,7 @@ arrayPanelToggle = [
 	[7404, "Panel_4_hide_source"]
 ];
 {
-	_ctrl = (findDisplay 7777) displayCtrl (_x select 0);
+	_ctrl = _display displayCtrl (_x select 0);
 
 	// Set value
 	_phase = platform animationSourcePhase (_x select 1);

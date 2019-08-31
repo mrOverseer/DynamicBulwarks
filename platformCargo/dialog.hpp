@@ -2,6 +2,7 @@ class platformCargo_Dialog
 {
     idd = 7777;
     movingEnabled = false;
+	onLoad = "_nul = ['onLoad', _this] execVM 'platformCargo\dialog.sqf';";
 
     class controls
     {
@@ -208,7 +209,7 @@ class platformCargo_Dialog
 			y = 0.489004 * safezoneH + safezoneY;
 			w = 0.0458333 * safezoneW;
 			h = 0.0549786 * safezoneH;
-            action = "_nil=['elevator', 0]ExecVM ""platformCargo\action.sqf""";
+            action = "_nul = ['elevator', _this, 0] execVM 'platformCargo\dialog.sqf';";
 		};
 		class platformCargo_elevator75Button: RscButton
 		{
@@ -219,7 +220,7 @@ class platformCargo_Dialog
 			y = 0.434026 * safezoneH + safezoneY;
 			w = 0.034375 * safezoneW;
 			h = 0.0329871 * safezoneH;
-            action = "_nil=['elevator', 75]ExecVM ""platformCargo\action.sqf""";
+            action = "_nul = ['elevator', _this, 75] execVM 'platformCargo\dialog.sqf';";
 		};
 		class platformCargo_elevator50Button: RscButton
 		{
@@ -230,7 +231,7 @@ class platformCargo_Dialog
 			y = 0.434026 * safezoneH + safezoneY;
 			w = 0.034375 * safezoneW;
 			h = 0.0329871 * safezoneH;
-            action = "_nil=['elevator', 50]ExecVM ""platformCargo\action.sqf""";
+            action = "_nul = ['elevator', _this, 50] execVM 'platformCargo\dialog.sqf';";
 		};
 		class platformCargo_elevator25Button: RscButton
 		{
@@ -241,7 +242,7 @@ class platformCargo_Dialog
 			y = 0.434026 * safezoneH + safezoneY;
 			w = 0.034375 * safezoneW;
 			h = 0.0329871 * safezoneH;
-            action = "_nil=['elevator', 25]ExecVM ""platformCargo\action.sqf""";
+            action = "_nul = ['elevator', _this, 25] execVM 'platformCargo\dialog.sqf';";
 		};
 		class platformCargo_elevatorUpButton: RscButton
 		{
@@ -252,7 +253,7 @@ class platformCargo_Dialog
 			y = 0.357056 * safezoneH + safezoneY;
 			w = 0.0458333 * safezoneW;
 			h = 0.0549786 * safezoneH;
-            action = "_nil=['elevator', 100]ExecVM ""platformCargo\action.sqf""";
+            action = "_nul = ['elevator', _this, 100] execVM 'platformCargo\dialog.sqf';";
 		};
 		class platformCargo_elevatorText: RscText
 		{
