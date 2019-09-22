@@ -22,6 +22,20 @@ if (count _targetPos == 0) then {
   clearBackpackCargoGlobal _supplyBox;
 
   // Weapon & ammo
+  _supplyBox addWeaponCargoGlobal ["hgun_ACPC2_F", 2];
+  _supplyBox addMagazineCargoGlobal ["9Rnd_45ACP_Mag", 30];
+  _supplyBox addWeaponCargoGlobal ["hlc_smg_mp5k", 2];
+  _supplyBox addMagazineCargoGlobal ["hlc_30Rnd_9x19_B_MP5", 30];
+  _supplyBox addWeaponCargoGlobal ["CSW_Desert_Eagle", 2];
+  _supplyBox addMagazineCargoGlobal ["CSW_7Rnd_127x33_AE", 30];
+  _supplyBox addWeaponCargoGlobal ["hlc_pistol_M712", 2];
+  _supplyBox addMagazineCargoGlobal ["hlc_20Rnd_763x25_B_M712", 30];
+  _supplyBox addWeaponCargoGlobal ["CSW_M500", 2];
+  _supplyBox addMagazineCargoGlobal ["CSW_5Rnd_127x41_Magnum", 30];
+  _supplyBox addWeaponCargoGlobal ["CUP_sgun_M1014", 2];
+  _supplyBox addMagazineCargoGlobal ["CUP_8Rnd_B_Beneli_74Pellets", 30];
+  _supplyBox addWeaponCargoGlobal ["hlc_rifle_honeybadger", 2];
+  _supplyBox addMagazineCargoGlobal ["hlc_50rnd_300BLK_STANAG_EPR", 30];
   _supplyBox addWeaponCargoGlobal ["arifle_AK12_GL_F", 1];
   _supplyBox addWeaponCargoGlobal ["arifle_AK12_GL_lush_F", 1];
   _supplyBox addMagazineCargoGlobal ["30Rnd_762x39_Mag_F", 15];
@@ -37,8 +51,8 @@ if (count _targetPos == 0) then {
   _supplyBox addMagazineCargoGlobal ["7Rnd_408_Mag", 25];
   _supplyBox addWeaponCargoGlobal ["srifle_DMR_04_ARCO_F", 1];
   _supplyBox addMagazineCargoGlobal ["10Rnd_127x54_Mag", 25];
-  _supplyBox addWeaponCargoGlobal ["LAGO_KU98K_NSK", 1];
-  _supplyBox addMagazineCargoGlobal ["KU98K_NSK_MAG", 50];
+  // _supplyBox addWeaponCargoGlobal ["LAGO_KU98K_NSK", 1];
+  // _supplyBox addMagazineCargoGlobal ["KU98K_NSK_MAG", 50];
   _supplyBox addWeaponCargoGlobal ["MMG_02_camo_F", 1];
   _supplyBox addMagazineCargoGlobal ["130Rnd_338_Mag", 8];
   _supplyBox addWeaponCargoGlobal ["MMG_01_tan_F", 1];
@@ -48,6 +62,7 @@ if (count _targetPos == 0) then {
 
   _supplyBox addMagazineCargoGlobal ["ACE_10Rnd_338_API526_Mag", 10];
   _supplyBox addMagazineCargoGlobal ["ACE_10Rnd_338_300gr_HPBT_Mag", 10];
+  _supplyBox addMagazineCargoGlobal ["CUP_100Rnd_556x45_BetaCMag", 25];
 
   // Optic
   _supplyBox addItemCargoGlobal ["optic_Arco", 2];
@@ -96,6 +111,7 @@ if (count _targetPos == 0) then {
   _supplyBox addWeaponCargoGlobal ["ACE_HuntIR_monitor", 1];
   _supplyBox addItemCargoGlobal ["ACE_EarPlugs", 5];
   _supplyBox addItemCargoGlobal ["ACE_rope15", 1];
+  _supplyBox addItemCargoGlobal ["bipod_01_F_blk", 5];
 
   // Equipament
   _supplyBox addItemCargoGlobal ["U_I_GhillieSuit", 2];
