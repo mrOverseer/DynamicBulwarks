@@ -410,7 +410,7 @@ HOSTILE_ARMOUR_POINT_SCORE = 4;
 /* Comment out or delete the below support items to prevent the player from buying them */
 
 BULWARK_SUPPORTITEMS = [
-    [10,    "Recon UAV",             "reconUAV"],
+    [100,    "Recon UAV",             "reconUAV"],
     [1680,  "Emergency Teleport",   "telePlode"],
     [1950,  "Paratroopers",          "paraDrop"],
     [3850,  "Missile CAS",          "airStrike"],
@@ -419,7 +419,7 @@ BULWARK_SUPPORTITEMS = [
     [5930,  "Mind Control Gas",    "mindConGas"],
     [6666,  "ARMAKART TM",           "armaKart"],
     [7500,  "Predator Drone",    "droneControl"],
-    [10000, "Supply Box Drop", "supportBoxDrop"],
+    [15000, "Supply Box Drop", "supportBoxDrop"],
     [50000, "Arsenal Drop",       "arsenalDrop"]
 ];
 
@@ -474,8 +474,7 @@ BULWARK_BUILDITEMS = [
 	[15000, "Pillbox Bunker",           "Land_PillboxBunker_01_big_F",         180,   8, false],
     [20000, "Big Bunker",               "Land_Bunker_01_big_F",                180,   8, false],
 	[35000, "Bastion Tower",            "Land_Helfenburk",                       0,  20, false],
-	[40000, "Praetorian 1C",            "B_AAA_System_01_F",                   180,   4,  true],
-	[50000, "Control Tower",            "Land_Airport_02_controlTower_F",        0,  20, false]
+	[50000, "Praetorian 1C",            "B_AAA_System_01_F",                   180,   4,  true]
 ];
 
 /* Time of Day*/
