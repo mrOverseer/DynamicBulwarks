@@ -33,7 +33,7 @@ if (floor random 15 == 1) then {
   	_lootRoom = selectRandom _lootRooms;
   	if(!isNil "_lootRoom") exitWith {_lootRoom};
   };
-  lootBox = createVehicle ["Land_WoodenBox_F", _lootBoxRoom, [], 4];
+  lootBox = createVehicle ["Land_PlasticCase_01_medium_F", _lootBoxRoom, [], 4];
   publicVariable "lootBox";
   [lootBox, ["<t color='#00ffff'>" + "Pickup", "bulwark\moveSpinBox.sqf"]] remoteExec ["addAction", 0, true];
   [lootBox, [

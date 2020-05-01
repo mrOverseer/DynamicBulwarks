@@ -1,5 +1,5 @@
 author = "Dynamic Bulwarks by Hilltop & omNomios";
-OnLoadMission = Modified by the A3 Community.;
+OnLoadMission = "Modified by the Mr.Overseer  Antray100";
 onLoadIntro = "Defend yourself";
 onLoadName = "A3 Dynamic Bulwarks";
 briefingName = "A3 Dynamic Bulwarks";
@@ -14,7 +14,7 @@ respawnDialog = 0;
 respawnTemplates[] = {"Base"};
 ReviveMode = 1;
 ReviveRequiredItems = 2;
-ReviveBleedOutDelay = 120;
+ReviveBleedOutDelay = 180;
 
 corpseManagerMode = 2;
 corpseLimit = 5;
@@ -41,6 +41,7 @@ class CfgFunctions
 	#include "build\Functions.hpp"
 	#include "hostiles\Functions.hpp"
 	#include "loot\Functions.hpp"
+	#include "platformCargo\Functions.hpp"
 };
 
 
@@ -165,6 +166,13 @@ class CfgSounds
 		sound[] = {"\sound\teleport.ogg", 5, 1};
 		titles[] = {0,""};
 	};
+
+	class platformCargo
+	{
+		name = "Platform Cargo";
+		sound[] = {"@A3\sounds_f\structures\doors\ServoRamp\ServoRampSlam.wss", 10, 1};
+		titles[] = {};
+	};
 };
 
 //Notification for Special Waves
@@ -181,6 +189,8 @@ class CfgNotifications
 };
 
 #include "bulwark\dialog.hpp"
+#include "bulwark\transferDialog.hpp"
+#include "platformCargo\dialog.hpp"
 
 
 class Params
@@ -202,9 +212,9 @@ class Params
 	class FILTER_PRESET
 	{
 		title = "Presets";
-		values[] = {0,1,2,3,4,5,6};
-		texts[] = {"Normal","CUP AFRF","CUP TAKI","CUP SLA","Global Mobilisation", "WW2", "WW2 (Winter)"};
-		default = 0;
+		values[] = {0,1,2,3,4,5,6,7,8};
+		texts[] = {"Normal", "CUP ACE", "CUP AFRF", "CUP TAKI", "CUP SLA", "Global Mobilisation", "WW2", "WW2 (Winter)", "Custom"};
+		default = 8;
 	};
 	class HOSTILE_LABEL
 	{
@@ -219,7 +229,7 @@ class Params
 		title = "Number of hostiles per wave";
 		values[] = {0.5,1,2,3};
 		texts[] = {"Low (Easiest)", "Normal", "Double", "Tripple (Hardest)"};
-		default = 1;
+		default = 0.5;
 	};
 
 	class HOSTILE_TEAM_MULTIPLIER
@@ -251,23 +261,23 @@ class Params
 		title = "Time between rounds";
 		values[] = {0, 15, 30, 60, 90, 120, 180, 240, 300};
 		texts[] = {"0", "15 Seconds", "30 Seconds", "1 Minute", "1 Minute 30 Seconds", "2 Minutes", "3 Minutes", "4 Minutes", "5 Minutes"};
-		default = 30;
+		default = 120;
 	};
 
 	class MAX_WAVES
 	{
 		title = "How Many Waves";
-		values[] = {"infinite", 20, 30, 40};
-		texts[] = {"Infinite", "20", "30", "40"};
-		default = "infinite";
+		values[] = {"infinite", 20, 25, 30, 40};
+		texts[] = {"Infinite", "20", "25", "30", "40"};
+		default = 20;
 	};
 
 	class BULWARK_MEDIKIT
 	{
 		title = "Medikits in Bulwark";
-		values[] = {0, 1, 2, 3, 4, 5, 6, 7, 8};
-		texts[] = {"None", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"};
-		default = 3;
+		values[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 20};
+		texts[] = {"None", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Ten", "Twenty"};
+		default = 10;
 	};
 
 	class PLAYER_STARTMAP
@@ -299,7 +309,7 @@ class Params
 		title = "Special Waves - suicide bombers, etc";
 		values[] = {0, 1};
 		texts[] = {"No", "Yes"};
-		default = 1;
+		default = 0;
 	};
 
 	class SPECIAL_WAVES_ONLY
@@ -323,7 +333,7 @@ class Params
 		title = "Vehicles can spawn after wave";
 		values[] = {5, 10, 15, 20, 25, 9999};
 		texts[] = {"5", "10", "15", "20", "25", "Never"};
-		default = 5;
+		default = 10;
 	};
 
 	class RANDOM_WEAPONS
@@ -371,7 +381,7 @@ class Params
 		title = "Minimum spawn room size";
 		values[] = {10, 13, 15, 18, 20};
 		texts[] = {"10m²", "13m²", "15m²", "18m²", "20m²"};
-		default = 13;
+		default = 15;
 	};
 
 	class BULWARK_LANDRATIO
@@ -395,7 +405,7 @@ class Params
 		title = "Minimum number of buildings in Bulwark radius";
 		values[] = {5, 10, 15, 20, 30};
 		texts[] = {"5","10","15","20","30"};
-		default = 10;
+		default = 15;
 	};
 
 	class LOOT_HOUSE_DISTRIBUTION
@@ -411,7 +421,7 @@ class Params
 		title = "Loot density";
 		values[] = {1, 2, 3, 4};
 		texts[] = {"Every location", "Every second location", "Every third location", "Every fourth location"};
-		default = 2;
+		default = 3;
 	};
 
 	class LOOT_SUPPLYDROP
@@ -457,9 +467,9 @@ class Params
 	class START_KILLPOINTS
 	{
 		title = "Kill points players start with";
-		values[] = {0, 250, 500, 1000, 2500, 5000, 10000};
-		texts[] = {"0", "250", "500", "1000", "2500", "5000", "10000"};
-		default = 250;
+		values[] = {0, 250, 500, 1000, 2500, 5000, 10000, 100000};
+		texts[] = {"0", "250", "500", "1000", "2500", "5000", "10000", "100000"};
+		default = 500;
 	};
 
 	class SUPPORT_MENU
@@ -467,7 +477,7 @@ class Params
 		title = "Find Satellite Dish to Unlock Supports";
 		values[] = {0, 1};
 		texts[] = {"No, Supports are available from the begining of the mission", "Yes, find the Satellite Dish to unlock the Support Menu"};
-		default = 0;
+		default = 1;
 	};
 
 	class SCORE_KILL
@@ -491,7 +501,7 @@ class Params
 		title = "Damage bonus points";
 		values[] = {0, 10, 20, 50, 100};
 		texts[] = {"0","10","20","50","100"};
-		default = 20;
+		default = 10;
 	};
 
 	class PARATROOP_COUNT
@@ -533,7 +543,7 @@ class Params
 			"Medikit",
 			"First Aid Kit / Medikit"
 		};
-		default = 2;
+		default = 0;
 		function = "bis_fnc_paramReviveRequiredItems";
 	};
 
@@ -542,7 +552,7 @@ class Params
 		title = "Tickets";
 		values[] = {0, 5, 10, 15, 20};
 		texts[] = {"0", "5", "10", "15", "20"};
-		default = 20;
+		default = 15;
 	};
 
 	class RESPAWN_TIME

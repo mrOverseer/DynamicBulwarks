@@ -1,41 +1,47 @@
 /**
-*  Preset
+*  editMe
+*
 *  Defines all global config for the mission
-*  Required mods:
+*
 *  Domain: Client, Server
 **/
-/* MOD FILTER */
-modTag = []; //limits loot and vehicles to a specific mod. Mods usually have a tag within their class names, use that. For example modTag = ["LIB"] would only spawn Iron Front Weapons. Can use multiple for example:modTag = ["LIB,"NORTH"];
+
 /* Attacker Waves */
-// Use group class names - To leave empty do: HOSTILE_LEVEL_1 = [];
-HOSTILE_LEVEL_1 = ["BanditCombatGroup"];                                       //wave 0
-// HOSTILE_LEVEL_2 = ["OIA_InfSquad","BanditCombatGroup"];                        //wave 5
-// HOSTILE_LEVEL_3 = ["OIA_InfSquad","BanditCombatGroup","OI_SniperTeam"];                        //wave 10
-// HOSTILE_LEVEL_4 = ["OI_ViperTeam","OIA_InfSquad","BanditCombatGroup","OI_SniperTeam"];         //wave 15
-HOSTILE_LEVEL_2 = ["BanditCombatGroup","ParaCombatGroup"];                        //wave 5
-HOSTILE_LEVEL_3 = ["BanditCombatGroup","ParaCombatGroup","HAF_InfSquad"];                        //wave 10
-HOSTILE_LEVEL_4 = ["BanditCombatGroup","HAF_InfSquad","OIA_InfSquad","OI_ViperTeam"];         //wave 15
-DEFECTOR_CLASS = ["BUS_InfSquad"];          //defector special wave units
-PARATROOP_CLASS = ["BUS_InfSquad"];         //friendly units called in via support
 
-//Unit Whitelist - unit classnames are expected for example: HOSTILE_LEVEL_1_WHITELIST = ["B_Soldier_A_F","B_support_MG_F"];
-HOSTILE_LEVEL_1_WHITELIST = []; //adds these units to the hostile levels, if you only want to use the whitelist and not the above groups, to leave empty do [];
-HOSTILE_LEVEL_2_WHITELIST = [];
-HOSTILE_LEVEL_3_WHITELIST = [];
-HOSTILE_LEVEL_4_WHITELIST = [];
-DEFECTOR_CLASS_WHITELIST = [];
-PARATROOP_CLASS_WHITELIST = [];
-//Vehicle Whitelist
-/* 0 = Adds Whitelist Vehicles to spawn. */
-/* 1 = Only Whitelist Vehicles will spawn */
-VEHICLE_WHITELIST_MODE = 0;
-HOSTILE_ARMED_CARS_WHITELIST = []; // HOSTILE_ARMED_CARS_WHITELIST = []; to leave empty
-HOSTILE_ARMOUR_WHITELIST = [];
-//Vehicle Blacklist
-HOSTILE_VEHICLE_BLACKLIST = [];
+// List_Bandits, List_ParaBandits, List_OPFOR, List_INDEP, List_NATO, List_Viper
+HOSTILE_LEVEL_1 = List_Bandits;    
+HOSTILE_LEVEL_2 = List_ParaBandits;
+HOSTILE_LEVEL_3 = List_INDEP; 
+HOSTILE_LEVEL_4 = List_OPFOR;    
+HOSTILE_LEVEL_5 = List_Viper;
+HOSTILE_ARMED_CARS = List_Armour;//expects vehicles
+HOSTILE_ARMOUR = List_ArmedCars; //expects vehicles
 
-/* LOOT */
-Medkit = "Medikit";
+HOSTILE_MULTIPLIER = ("HOSTILE_MULTIPLIER" call BIS_fnc_getParamValue);  // How many hostiles per wave (waveCount x HOSTILE_MULTIPLIER)
+HOSTILE_TEAM_MULTIPLIER = ("HOSTILE_TEAM_MULTIPLIER" call BIS_fnc_getParamValue) / 100;   // How many extra units are added per player
+PISTOL_HOSTILES = ("PISTOL_HOSTILES" call BIS_fnc_getParamValue);  //What wave enemies stop only using pistols
+
+/* LOCATION LIST OPTIONS */
+// List_AllCities - for any random City
+// List_SpecificPoint - will start the mission on the "Specific Bulwark Pos" marker (move with mission editor). Location must meet BULWARK_LANDRATIO and LOOT_HOUSE_DENSITY, BULWARK_MINSIZE, etc requirements
+// List_LocationMarkers - for a location selected randomly from the Bulwark Zones in editor (Currently broken)
+// *IMPORTANT* If you get an error using List_SpecificPoint it means that there isn't a building that qualifies. Turning down the "Minimum spawn room size" parameter might help.
+BULWARK_LOCATIONS = List_AllCities;
+
+BULWARK_RADIUS = ("BULWARK_RADIUS" call BIS_fnc_getParamValue);
+BULWARK_MINSIZE = ("BULWARK_MINSIZE" call BIS_fnc_getParamValue);   // Spawn room must be bigger than x square metres
+BULWARK_LANDRATIO = ("BULWARK_LANDRATIO" call BIS_fnc_getParamValue);
+LOOT_HOUSE_DENSITY = ("LOOT_HOUSE_DENSITY" call BIS_fnc_getParamValue);
+
+PLAYER_STARTWEAPON = if ("PLAYER_STARTWEAPON" call BIS_fnc_getParamValue == 1) then {true} else {false};
+PLAYER_STARTMAP    = if ("PLAYER_STARTMAP" call BIS_fnc_getParamValue == 1) then {true} else {false};
+PLAYER_STARTNVG    = if ("PLAYER_STARTNVG" call BIS_fnc_getParamValue == 1) then {true} else {false};
+
+/* Respawn */
+RESPAWN_TIME = ("RESPAWN_TIME" call BIS_fnc_getParamValue);
+RESPAWN_TICKETS = ("RESPAWN_TICKETS" call BIS_fnc_getParamValue);
+
+/* Loot Blacklist */
 LOOT_BLACKLIST = [
     "O_Static_Designator_02_weapon_F", // If players find and place CSAT UAVs they count as hostile units and round will not progress
     "I_UAV_01_backpack_F",
@@ -184,87 +190,87 @@ LOOT_BLACKLIST = [
     "B_LegStrapBag_black_F",
     "B_LegStrapBag_olive_F",
     // Contact
-    // "arifle_AK12U_F",
-    // "arifle_AK12U_arid_F",
-    // "arifle_AK12U_lush_F",
-    // "sgun_HunterShotgun_01_F",
-    // "sgun_HunterShotgun_01_sawedoff_F",
-    // "srifle_DMR_06_hunter_F",
-    // "arifle_MSBS65_F",
-    // "arifle_MSBS65_sand_F",
-    // "arifle_MSBS65_camo_F",
-    // "arifle_MSBS65_black_F",
-    // "arifle_MSBS65_GL_F",
-    // "arifle_MSBS65_GL_sand_F",
-    // "arifle_MSBS65_GL_camo_F",
-    // "arifle_MSBS65_GL_black_F",
-    // "arifle_MSBS65_Mark_F",
-    // "arifle_MSBS65_Mark_sand_F",
-    // "arifle_MSBS65_Mark_camo_F",
-    // "arifle_MSBS65_Mark_black_F",
-    // "arifle_MSBS65_UBS_F",
-    // "arifle_MSBS65_UBS_sand_F",
-    // "arifle_MSBS65_UBS_camo_F",
-    // "arifle_MSBS65_UBS_black_F",
-    // "arifle_RPK12_F",
-    // "arifle_RPK12_arid_F",
-    // "arifle_RPK12_lush_F",
-    // "H_Beret_EAF_01_F",
-    // "H_HelmetAggressor_F",
-    // "H_HelmetAggressor_cover_F",
-    // "H_HelmetAggressor_cover_taiga_F",
-    // "H_HelmetB_plain_wdl",
-    // "H_HelmetB_light_wdl",
-    // "H_HelmetSpecB_wdl",
-    // "H_Tank_eaf_F",
-    // "H_HelmetCrew_I_E",
-    // "H_PilotHelmetFighter_I_E",
-    // "H_PilotHelmetHeli_I_E",
-    // "H_CrewHelmetHeli_I_E",
-    // "H_HelmetHBK_headset_F",
-    // "H_HelmetHBK_ear_F",
-    // "H_HelmetHBK_F",
-    // "H_HelmetHBK_chops_F",
-    // "H_MilCap_wdl",
-    // "H_MilCap_taiga",
-    // "H_MilCap_grn",
-    // "H_MilCap_eaf",
-    // "H_Hat_Tinfoil_F",
-    // "H_Booniehat_wdl",
-    // "H_Booniehat_taiga",
-    // "H_Booniehat_mgrn",
-    // "H_Booniehat_eaf",
-    // "U_O_R_Gorka_01_black_F",
-    // "U_I_E_Uniform_01_coveralls_F",
-    // "U_I_E_Uniform_01_shortsleeve_F",
-    // "U_B_CombatUniform_mcam_wdl_f",
-    // "U_B_CombatUniform_tshirt_mcam_wdl_f",
-    // "U_I_E_Uniform_01_tanktop_F",
-    // "U_I_E_Uniform_01_sweater_F",
-    // "U_I_E_Uniform_01_officer_F",
-    // "U_I_E_Uniform_01_F",
-    // "U_I_L_Uniform_01_deserter_F",
-    // "U_I_L_Uniform_01_camo_F",
-    // "U_B_CombatUniform_vest_mcam_wdl_f",
-    // "U_I_L_Uniform_01_tshirt_skull_F",
-    // "U_I_L_Uniform_01_tshirt_sport_F",
-    // "U_I_L_Uniform_01_tshirt_black_F",
-    // "U_C_E_LooterJacket_01_F",
-    // "U_C_Uniform_Scientist_01_formal_F",
-    // "U_C_Uniform_Scientist_01_F",
-    // "U_C_Uniform_Scientist_02_F",
-    // "U_C_Uniform_Scientist_02_formal_F",
-    // "U_C_Uniform_Farmer_01_F",
-    // "U_O_R_Gorka_01_F",
-    // "U_O_R_Gorka_01_brown_F",
-    // "U_O_R_Gorka_01_camo_F",
-    // "U_C_CBRN_Suit_01_Blue_F",
-    // "U_C_CBRN_Suit_01_White_F",
-    // "U_C_CBRN_Suit_01_Wdl_F",
-    // "U_C_CBRN_Suit_01_MTP_F",
-    // "U_C_CBRN_Suit_01_Tropic_F",
-    // "U_C_CBRN_Suit_01_AAF_F",
-    // "U_C_CBRN_Suit_01_EAF_F",
+    "arifle_AK12U_F",
+    "arifle_AK12U_arid_F",
+    "arifle_AK12U_lush_F",
+    "sgun_HunterShotgun_01_F",
+    "sgun_HunterShotgun_01_sawedoff_F",
+    "srifle_DMR_06_hunter_F",
+    "arifle_MSBS65_F",
+    "arifle_MSBS65_sand_F",
+    "arifle_MSBS65_camo_F",
+    "arifle_MSBS65_black_F",
+    "arifle_MSBS65_GL_F",
+    "arifle_MSBS65_GL_sand_F",
+    "arifle_MSBS65_GL_camo_F",
+    "arifle_MSBS65_GL_black_F",
+    "arifle_MSBS65_Mark_F",
+    "arifle_MSBS65_Mark_sand_F",
+    "arifle_MSBS65_Mark_camo_F",
+    "arifle_MSBS65_Mark_black_F",
+    "arifle_MSBS65_UBS_F",
+    "arifle_MSBS65_UBS_sand_F",
+    "arifle_MSBS65_UBS_camo_F",
+    "arifle_MSBS65_UBS_black_F",
+    "arifle_RPK12_F",
+    "arifle_RPK12_arid_F",
+    "arifle_RPK12_lush_F",
+    "H_Beret_EAF_01_F",
+    "H_HelmetAggressor_F",
+    "H_HelmetAggressor_cover_F",
+    "H_HelmetAggressor_cover_taiga_F",
+    "H_HelmetB_plain_wdl",
+    "H_HelmetB_light_wdl",
+    "H_HelmetSpecB_wdl",
+    "H_Tank_eaf_F",
+    "H_HelmetCrew_I_E",
+    "H_PilotHelmetFighter_I_E",
+    "H_PilotHelmetHeli_I_E",
+    "H_CrewHelmetHeli_I_E",
+    "H_HelmetHBK_headset_F",
+    "H_HelmetHBK_ear_F",
+    "H_HelmetHBK_F",
+    "H_HelmetHBK_chops_F",
+    "H_MilCap_wdl",
+    "H_MilCap_taiga",
+    "H_MilCap_grn",
+    "H_MilCap_eaf",
+    "H_Hat_Tinfoil_F",
+    "H_Booniehat_wdl",
+    "H_Booniehat_taiga",
+    "H_Booniehat_mgrn",
+    "H_Booniehat_eaf",
+    "U_O_R_Gorka_01_black_F",
+    "U_I_E_Uniform_01_coveralls_F",
+    "U_I_E_Uniform_01_shortsleeve_F",
+    "U_B_CombatUniform_mcam_wdl_f",
+    "U_B_CombatUniform_tshirt_mcam_wdl_f",
+    "U_I_E_Uniform_01_tanktop_F",
+    "U_I_E_Uniform_01_sweater_F",
+    "U_I_E_Uniform_01_officer_F",
+    "U_I_E_Uniform_01_F",
+    "U_I_L_Uniform_01_deserter_F",
+    "U_I_L_Uniform_01_camo_F",
+    "U_B_CombatUniform_vest_mcam_wdl_f",
+    "U_I_L_Uniform_01_tshirt_skull_F",
+    "U_I_L_Uniform_01_tshirt_sport_F",
+    "U_I_L_Uniform_01_tshirt_black_F",
+    "U_C_E_LooterJacket_01_F",
+    "U_C_Uniform_Scientist_01_formal_F",
+    "U_C_Uniform_Scientist_01_F",
+    "U_C_Uniform_Scientist_02_F",
+    "U_C_Uniform_Scientist_02_formal_F",
+    "U_C_Uniform_Farmer_01_F",
+    "U_O_R_Gorka_01_F",
+    "U_O_R_Gorka_01_brown_F",
+    "U_O_R_Gorka_01_camo_F",
+    "U_C_CBRN_Suit_01_Blue_F",
+    "U_C_CBRN_Suit_01_White_F",
+    "U_C_CBRN_Suit_01_Wdl_F",
+    "U_C_CBRN_Suit_01_MTP_F",
+    "U_C_CBRN_Suit_01_Tropic_F",
+    "U_C_CBRN_Suit_01_AAF_F",
+    "U_C_CBRN_Suit_01_EAF_F",
     "V_PlateCarrier2_wdl",
     "V_PlateCarrierGL_wdl",
     "V_PlateCarrierSpec_wdl",
@@ -300,22 +306,22 @@ LOOT_BLACKLIST = [
     "I_E_GMG_01_high_Weapon_F",
     "I_E_GMG_01_Weapon_F",
     "I_E_GMG_01_A_Weapon_F",
-    // "B_AssaultPack_wdl_F",
-    // "B_AssaultPack_eaf_F",
-    // "B_FieldPack_taiga_F",
-    // "B_FieldPack_green_F",
-    // "B_RadioBag_01_digi_F",
-    // "B_RadioBag_01_eaf_F",
-    // "B_RadioBag_01_ghex_F",
-    // "B_RadioBag_01_hex_F",
-    // "B_RadioBag_01_mtp_F",
-    // "B_RadioBag_01_black_F",
-    // "B_RadioBag_01_tropic_F",
-    // "B_RadioBag_01_oucamo_F",
-    // "B_Carryall_wdl_F",
-    // "B_Carryall_eaf_F",
-    // "B_Carryall_taiga_F",
-    // "B_Carryall_green_F",
+    "B_AssaultPack_wdl_F",
+    "B_AssaultPack_eaf_F",
+    "B_FieldPack_taiga_F",
+    "B_FieldPack_green_F",
+    "B_RadioBag_01_digi_F",
+    "B_RadioBag_01_eaf_F",
+    "B_RadioBag_01_ghex_F",
+    "B_RadioBag_01_hex_F",
+    "B_RadioBag_01_mtp_F",
+    "B_RadioBag_01_black_F",
+    "B_RadioBag_01_tropic_F",
+    "B_RadioBag_01_oucamo_F",
+    "B_Carryall_wdl_F",
+    "B_Carryall_eaf_F",
+    "B_Carryall_taiga_F",
+    "B_Carryall_green_F",
     "B_CombinationUnitRespirator_01_F",
     "I_E_HMG_01_support_high_F",
     "I_E_HMG_01_support_F",
@@ -354,110 +360,74 @@ LOOT_BLACKLIST = [
     "ace_gunbag_Tan",
     "ace_gunbag"
 ];
-//Loot Chances - chance in % that weapon spawn, spawns a weapon of the following type -- 10 would be 10% chance, 40 would be 40% chance if all combined are 100:
-launcherWeapTypeChance =    15;
-assaultWeapTypeChance =     35;
-smgWeapTypeChance =         20;    //shotguns included in SMG array since there aren't that many
-sniperWeapTypeChance =      20;
-mgWeapTypeChance =          5;
-handgunWeapTypeChance =		5;
-//chances in % for what type of item spawns -- 10 would be 10% chance, 40 would be 40% chance if all combined are 100:
-clothesTypeChance = 		15;
-itemsTypeChance =			10;
-weaponsTypeChance =			25;
-backpacksTypeChance =		35;
-explosivesTypeChance =		25;
-//Ammo amount - how many magazines can spawn with weapons [1,3] would be minimum 1 and maximum 3, the maximum is also used to determine how much ammo you get from ammo drops:
-magLAUNCHER =	[1,3];
-magASSAULT =	[1,3];
-magSMG =		[2,5];      //shotguns included in SMG array since there aren't that many
-magSNIPER =		[3,6];
-magMG =			[1,3];
-magHANDGUN =	[2,4];
 
 /* Whitelist modes */
-/* 0 = Adds Whitelist Items to loot spawn */
+/* 0 = Off */
 /* 1 = Only Whitelist Items will spawn as loot */
-//There must be at least 1 element in each array for Whitelist mode 1, or set the spawn chance of the ones you left empty to 0
-//Adding items multiple times increases the chance of them to be spawned.
+/* 2 = Whitelist items get added to existing loot (increases the chance of loot spawning */
 LOOT_WHITELIST_MODE = 0;
+
 /* Loot Whitelists */
 /* Fill with classname arrays: ["example_item_1", "example_item_2"] */
-LOOT_WHITELIST_WEAPON_MG = [];
-LOOT_WHITELIST_WEAPON_SNIPER = [];
-LOOT_WHITELIST_WEAPON_SMG = [];     //shotguns included in SMG array since there aren't that many
-LOOT_WHITELIST_WEAPON_ASSAULT = [];
-LOOT_WHITELIST_WEAPON_LAUNCHER = [];
-LOOT_WHITELIST_WEAPON_HANDGUN = [];
+/* To use Whitelisting there MUST be at least one applicaple item in each LOOT_WHITELIST array*/
+LOOT_WHITELIST_WEAPON = [];
 LOOT_WHITELIST_APPAREL = [];
 LOOT_WHITELIST_ITEM = [];
 LOOT_WHITELIST_EXPLOSIVE = [];
 LOOT_WHITELIST_STORAGE = [];
 
-/* POINTS */
-SCORE_RANDOMBOX = 950;  // Cost to spin the box
-//Point multipliers of SCORE_KILL for different waves
+/* Loot Spawn */
+LOOT_WEAPON_POOL    = List_AllWeapons - LOOT_BLACKLIST;    // Classnames of Loot items as an array
+LOOT_APPAREL_POOL   = List_AllClothes + List_Vests - LOOT_BLACKLIST;
+LOOT_ITEM_POOL      = List_Optics + List_Items - LOOT_BLACKLIST;
+LOOT_EXPLOSIVE_POOL = List_Mines + List_Grenades + List_Charges - LOOT_BLACKLIST;
+LOOT_STORAGE_POOL   = List_Backpacks - LOOT_BLACKLIST;
+
+/* Random Loot */
+LOOT_HOUSE_DISTRIBUTION = ("LOOT_HOUSE_DISTRIBUTION" call BIS_fnc_getParamValue);  // Every *th house will spwan loot.
+LOOT_ROOM_DISTRIBUTION = ("LOOT_ROOM_DISTRIBUTION" call BIS_fnc_getParamValue);   // Every *th position, within that house will spawn loot.
+LOOT_DISTRIBUTION_OFFSET = 0; // Offset the position by this number.
+LOOT_SUPPLYDROP = ("LOOT_SUPPLYDROP" call BIS_fnc_getParamValue) / 100;        // Radius of supply drop
+PARATROOP_COUNT = ("PARATROOP_COUNT" call BIS_fnc_getParamValue);
+PARATROOP_CLASS = List_NATO;
+DEFECTOR_CLASS = List_NATO;
+
+/* Points */
+SCORE_KILL = ("SCORE_KILL" call BIS_fnc_getParamValue);                 // Base Points for a kill
+SCORE_HIT = ("SCORE_HIT" call BIS_fnc_getParamValue);                   // Every Bullet hit that doesn't result in a kill
+SCORE_DAMAGE_BASE = ("SCORE_DAMAGE_BASE" call BIS_fnc_getParamValue);   // Extra points awarded for damage. 100% = SCORE_DAMAGE_BASE. 50% = SCORE_DAMAGE_BASE/2
+SCORE_RANDOMBOX = 250;  // Cost to spin the box
+
+/*Point multipliers of SCORE_KILL for different waves */
 HOSTILE_LEVEL_1_POINT_SCORE = 0.75;
 HOSTILE_LEVEL_2_POINT_SCORE = 1;
 HOSTILE_LEVEL_3_POINT_SCORE = 1.50;
 HOSTILE_LEVEL_4_POINT_SCORE = 1.75;
-HOSTILE_CAR_POINT_SCORE = 2;
+HOSTILE_LEVEL_5_POINT_SCORE = 2;
+HOSTILE_CAR_POINT_SCORE = 3;
 HOSTILE_ARMOUR_POINT_SCORE = 4;
 
-/* SPECIAL WAVES */
-//comment out the waves you don't like. Don't forget to remove the , behind the last entry
-//list of special waves you can get early on
-lowSpecialWave_list = [
-	"fogWave",
-	"switcharooWave",
-    "specCivs"
-];
-//comment out the waves you don't like. Don't forget to remove the , behind the last entry
-//list of all special waves you can get on higher waves
-specialWave_list= [
-	"specCivs",
-	"fogWave",
-	"demineWave",
-	"switcharooWave",
-	"suicideWave",
-	"specMortarWave",
-	"nightWave",
-	"defectorWave",
-    "mgWave",
-    "sniperWave"
-];
-//starting from this wave the lowSpecialWaveList is used
-lowSpecialWaveStart = 5;
-//starting from this wave the specialWaveList is used
-SpecialWaveStart = 10;
+/* Comment out or delete the below support items to prevent the player from buying them */
 
-/* SUPPORT */
-//Comment out or delete the below support items to prevent the player from buying them
 BULWARK_SUPPORTITEMS = [
-    [100,  "Recon UAV",               "reconUAV"],
-    [1680, "Emergency Teleport",     "telePlode"],
-    [1950, "Paratroopers",            "paraDrop"],
-    [3850, "Missile CAS",            "airStrike"],
-    [4220, "Mine Cluster Shell",     "mineField"],
-    [4690, "Rage Stimpack",           "ragePack"],
-    [5930, "Mind Control Gas",      "mindConGas"],
-    [6666, "ARMAKART TM",             "armaKart"],
-    [7500, "Predator Drone",      "droneControl"],
-    [15000, "Supply Box Drop",  "supportBoxDrop"],
-    [50000, "Arsenal Drop",        "arsenalDrop"]
+    [100,    "Recon UAV",             "reconUAV"],
+    [1680,  "Emergency Teleport",   "telePlode"],
+    [1950,  "Paratroopers",          "paraDrop"],
+    [3850,  "Missile CAS",          "airStrike"],
+    [4220,  "Mine Cluster Shell",   "mineField"],
+    [4690,  "Rage Stimpack",         "ragePack"],
+    [5930,  "Mind Control Gas",    "mindConGas"],
+    [6666,  "ARMAKART TM",           "armaKart"],
+    [7500,  "Predator Drone",    "droneControl"],
+    [15000, "Supply Box Drop", "supportBoxDrop"],
+    [50000, "Arsenal Drop",       "arsenalDrop"]
 ];
-//support settings:
-casAircraft = "B_Plane_CAS_01_DynamicLoadout_F"; //CAS aircraft default: "B_Plane_CAS_01_DynamicLoadout_F"
-supportAircraft = "B_T_VTOL_01_vehicle_F"; //Plane that drops support and paratroopers default: "B_T_VTOL_01_vehicle_F"
-supportAircraftFlyInHeight = 100; //default: 100
-supportAircraftWaypointHeight = 300; //default: 300
-supportAircraftSpeed = 20; // adds speed to the aircraft -- default 20
 
 /* Objects the Player can buy */
 
 /* Radius prevents hostiles walking through objects */
 
-/*  Price - Display Name - Class Name - Rotation When Bought - Object Radius (meters) - explosive - invincible - with crew (for autonomous)	*/
+/*  Price - Display Name - Class Name - Rotation When Bought - Object Radius (meters) *prevents AI glitching through object and triggers suicide bombers - Has AI true/false (for objects with AI like autonomous turrests) */
 BULWARK_BUILDITEMS = [
     [10,    "Razon Wire",		        "Land_Razorwire_F",				         0,   1, false],
 	[25,    "Long Plank (8m)",          "Land_Plank_01_8m_F",                    0,   4, false],
@@ -505,4 +475,26 @@ BULWARK_BUILDITEMS = [
     [20000, "Big Bunker",               "Land_Bunker_01_big_F",                180,   8, false],
 	[35000, "Bastion Tower",            "Land_Helfenburk",                       0,  20, false],
 	[50000, "Praetorian 1C",            "B_AAA_System_01_F",                   180,   4,  true]
+];
+
+/* Time of Day*/
+DAY_TIME_FROM = ("DAY_TIME_FROM" call BIS_fnc_getParamValue);
+DAY_TIME_TO = ("DAY_TIME_TO" call BIS_fnc_getParamValue);
+
+// Check for sneaky inverted configuration. FROM should always be before TO.
+if (DAY_TIME_FROM > DAY_TIME_TO) then {
+    DAY_TIME_FROM = DAY_TIME_TO - 2;
+};
+
+/* Starter MediKits */
+BULWARK_MEDIKITS = ("BULWARK_MEDIKIT" call BIS_fnc_getParamValue);
+
+// List points for transfer
+BULWARK_TRANSFERPOINT = [
+    100,
+    500,
+    1000,
+    5000,
+    10000,
+    20000
 ];

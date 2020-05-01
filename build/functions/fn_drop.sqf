@@ -57,6 +57,25 @@ _object setVehiclePosition [_object, [], 0, 'CAN_COLLIDE'];
 	]
 ] remoteExec ['addAction', 0];
 
+if (typeOf _object == PC_CLASS_NAME) then {
+	// Update start position
+	{
+		if ((str _object splitstring ": " select 1) == _x select 0) exitWith {
+			PC_START_POSITION set [_forEachIndex, [_x select 0, getPosATL _object]];
+			publicVariable "PC_START_POSITION";
+		};
+	} forEach PC_START_POSITION;
+
+	[
+		_object,
+		[
+			"<t color='#ffa500'>" + "Platform Cargo",
+			"_this spawn platformCargo_fnc_openGui",
+			"",2.5,false,false,"true","true",9
+		]
+	] remoteExec ["addAction", 0];
+};
+
 _caller setVariable ["buildItemHeld", false, true];
 _object setVariable ["buildItemHeld", false, true];
 [mainZeus, [[_object], true]] remoteExec ["addCuratorEditableObjects", 0, true];

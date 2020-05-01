@@ -33,6 +33,7 @@ publicVariable "bulwarkBox";
 publicVariable "PARATROOP_CLASS";
 publicVariable "BULWARK_SUPPORTITEMS";
 publicVariable "BULWARK_BUILDITEMS";
+publicVariable "BULWARK_TRANSFERPOINT";
 publicVariable "PLAYER_STARTWEAPON";
 publicVariable "PLAYER_STARTMAP";
 publicVariable "PLAYER_STARTNVG";
@@ -84,3 +85,6 @@ setDate [2018, 7, 1, _timeToSet, 0];
 [] execVM "hostiles\clearStuck.sqf";
 //[] execVM "hostiles\solidObjects.sqf";
 [] execVM "hostiles\moveHosToPlayer.sqf";
+
+// Platform cargo
+[] execVM "platformCargo\init.sqf";

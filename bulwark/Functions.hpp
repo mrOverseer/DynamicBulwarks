@@ -10,8 +10,9 @@ class bulwark
         class roomCentre {};
         class roomVolume {};
         class startWave {};
-    		class endWave {};
+        class endWave {};
         class revivePlayer{};
         class bulwarkReset{};
+        class transferGui {};
     };
 };

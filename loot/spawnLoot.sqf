@@ -43,7 +43,7 @@ if (!SUPPORTMENU) then {
 		SUPPORTMENU = true;
 		publicVariable 'SUPPORTMENU';
 		SatUnlocks = missionNamespace getVariable 'SatUnlocks';
-		[_player, (20 * _pointsMulti)] remoteExecCall ['killPoints_fnc_add', 2];
+		[_player, (random 100 * _pointsMulti)] remoteExecCall ['killPoints_fnc_add', 2];
 		{
 			[_x] remoteExec ['deleteVehicle', 2];
 		} forEach SatUnlocks;
