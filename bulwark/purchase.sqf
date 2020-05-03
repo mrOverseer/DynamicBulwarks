@@ -67,20 +67,6 @@ if (objPurchase) then {
       clearMagazineCargoGlobal shopVehic;
       clearBackpackCargoGlobal shopVehic;
     };
-
-    // Objects without damage
-    withoutDamage = [
-        "Box_NATO_AmmoVeh_F",
-        "Box_NATO_Support_F",
-        "Land_Cargo_Patrol_V3_F",
-        "CargoPlaftorm_01_green_F",
-        "B_HMG_01_A_F",
-        "B_AAA_System_01_F"
-    ];
-
-    if (withoutDamage find _shopClass != -1) then {
-      shopVehic allowDamage false;
-    };
     
     if (PC_CLASS_NAME == _shopClass) then {
         PC_START_POSITION pushBack [str shopVehic splitstring ": " select 1, getPosATL shopVehic];

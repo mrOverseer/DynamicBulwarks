@@ -6,7 +6,7 @@
 *  Domain: Client, Server
 **/
 
-HOSTILE_MULTIPLIER = ("HOSTILE_MULTIPLIER" call BIS_fnc_getParamValue);  // How many hostiles per wave (waveCount x HOSTILE_MULTIPLIER)
+HOSTILE_MULTIPLIER = ("HOSTILE_MULTIPLIER" call BIS_fnc_getParamValue) / 10;  // How many hostiles per wave (waveCount x HOSTILE_MULTIPLIER)
 HOSTILE_TEAM_MULTIPLIER = ("HOSTILE_TEAM_MULTIPLIER" call BIS_fnc_getParamValue) / 100;   // How many extra units are added per player
 PISTOL_HOSTILES = ("PISTOL_HOSTILES" call BIS_fnc_getParamValue);  //What wave enemies stop only using pistols
 RANDOM_WEAPONS = if ("RANDOM_WEAPONS" call BIS_fnc_getParamValue == 1) then {true} else {false};

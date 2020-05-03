@@ -1,5 +1,5 @@
 author = "Dynamic Bulwarks by Hilltop & omNomios";
-OnLoadMission = "Modified by the Mr.Overseer  Antray100";
+OnLoadMission = "Modified by Overseer and Antray100";
 onLoadIntro = "Defend yourself";
 onLoadName = "A3 Dynamic Bulwarks";
 briefingName = "A3 Dynamic Bulwarks";
@@ -77,7 +77,7 @@ class CfgDebriefing
 {
 	class End1
 	{
-		title = [END];
+		title = "[END]";
 		subtitle = "You were wiped out";
 		description = "Game Over";
 		pictureBackground = "";
@@ -227,9 +227,9 @@ class Params
 	class HOSTILE_MULTIPLIER
 	{
 		title = "Number of hostiles per wave";
-		values[] = {0.5,1,2,3};
+		values[] = {5,10,20,30};
 		texts[] = {"Low (Easiest)", "Normal", "Double", "Tripple (Hardest)"};
-		default = 0.5;
+		default = 1;
 	};
 
 	class HOSTILE_TEAM_MULTIPLIER
@@ -309,7 +309,7 @@ class Params
 		title = "Special Waves - suicide bombers, etc";
 		values[] = {0, 1};
 		texts[] = {"No", "Yes"};
-		default = 0;
+		default = 1;
 	};
 
 	class SPECIAL_WAVES_ONLY
@@ -469,7 +469,7 @@ class Params
 		title = "Kill points players start with";
 		values[] = {0, 250, 500, 1000, 2500, 5000, 10000, 100000};
 		texts[] = {"0", "250", "500", "1000", "2500", "5000", "10000", "100000"};
-		default = 500;
+		default = 5000;
 	};
 
 	class SUPPORT_MENU
