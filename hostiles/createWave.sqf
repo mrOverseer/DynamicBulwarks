@@ -92,11 +92,15 @@ DBW_getHostileListsAndKillMulti = {
 	[_classArray,_scoreMulti]
 };
 DBW_getHostileAmount = { //determines how many units need to be spawned
-	_playerAmountMulti = ((playersNumber west) * HOSTILE_TEAM_MULTIPLIER) - HOSTILE_TEAM_MULTIPLIER; //Hostile_TEAM_MULTIPLIER only has an effect if 2 or more people are online this way
+	_playerAmountMulti = ((playersNumber west) * HOSTILE_TEAM_MULTIPLIER) - HOSTILE_TEAM_MULTIPLIER;
 	_difficultyMulti = HOSTILE_MULTIPLIER; //multiplies everything
 	_waveScaleBase = 1; //adds 2 to base value each wave
 	_baseValue = _waveScaleBase + _playerAmountMulti; //actual base value with player amount
 	_amountTotal = floor (_baseValue * attkWave * _difficultyMulti);
+	// Only has an effect if HOSTILE_MULTIPLIER < 1
+	if (0 == _amountTotal) then {
+		_amountTotal = 1;
+	};
 	_amountTotal
 };
 DBW_spawnHostile = {
