@@ -54,8 +54,8 @@ player setPosASL ([bulwarkBox] call bulwark_fnc_findPlaceAround);
 if(PLAYER_STARTWEAPON) then {
     _weap = selectRandom LOOT_WEAPON_HANDGUN_POOL;
 	_ammo = selectRandom getArray (configFile >> "CfgWeapons" >> _weap >> "magazines");
-	for "_i" from 1 to 3 do {_player addMagazine _ammo;};
-	_player addWeapon _weap;
+	for "_i" from 1 to 3 do { player addMagazine _ammo; };
+	player addWeapon _weap;
 };
 
 if(PLAYER_STARTMAP) then {

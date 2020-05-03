@@ -50,6 +50,7 @@ publicVariable "magSMG";
 publicVariable "magSNIPER";
 publicVariable "magMG";
 publicVariable "magHANDGUN";
+publicVariable "LOOT_WEAPON_HANDGUN_POOL";
 
 //determine if Support Menu is available
 _supportParam = ("SUPPORT_MENU" call BIS_fnc_getParamValue);
