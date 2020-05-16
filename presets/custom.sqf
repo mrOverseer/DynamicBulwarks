@@ -395,7 +395,7 @@ LOOT_WHITELIST_EXPLOSIVE = [];
 LOOT_WHITELIST_STORAGE = [];
 
 /* POINTS */
-SCORE_RANDOMBOX = 950;  // Cost to spin the box
+SCORE_RANDOMBOX = 250;  // Cost to spin the box
 //Point multipliers of SCORE_KILL for different waves
 HOSTILE_LEVEL_1_POINT_SCORE = 0.75;
 HOSTILE_LEVEL_2_POINT_SCORE = 1;

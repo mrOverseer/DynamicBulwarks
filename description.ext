@@ -413,7 +413,7 @@ class Params
 		title = "Loot distribution";
 		values[] = {1, 2, 3, 4};
 		texts[] = {"Every building", "Every second building", "Every third building", "Every fourth building"};
-		default = 1;
+		default = 2;
 	};
 
 	class LOOT_ROOM_DISTRIBUTION
@@ -469,7 +469,7 @@ class Params
 		title = "Kill points players start with";
 		values[] = {0, 250, 500, 1000, 2500, 5000, 10000, 100000};
 		texts[] = {"0", "250", "500", "1000", "2500", "5000", "10000", "100000"};
-		default = 5000;
+		default = 500;
 	};
 
 	class SUPPORT_MENU

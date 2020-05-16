@@ -40,7 +40,7 @@ _sWeap = secondaryWeapon _ammoPlayer;
 if (_sWeap != "") then {
   _ammoArray = getArray (configFile >> "CfgWeapons" >> _sWeap >> "magazines");
   _ammoToAdd = selectRandom _ammoArray;
-  ammoPlayer addMagazines [_ammoToAdd, magLAUNCHER select 1];
+  _ammoPlayer addMagazines [_ammoToAdd, magLAUNCHER select 1];
 };
 
 _hWeap = handgunWeapon _ammoPlayer;
