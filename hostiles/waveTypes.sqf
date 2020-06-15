@@ -17,17 +17,22 @@ DBW_SUICIDEWAVE = {
 	execVM "hostiles\suicideAudio.sqf";
 	["SpecialWarning",["SUICIDE BOMBERS! Don't Let Them Get Close!"]] remoteExec ["BIS_fnc_showNotification", 0];
 	["Alarm"] remoteExec ["playSound", 0];
-	[] call DBW_getHostileListsAndKillMulti params ["_classArray","_scoreMulti"];
-	_amount = call DBW_getHostileAmount;
+
+	_infantryToSpawnWithCosts = attkWave call hostiles_fnc_getInfantryForWave;
 	_skill = attkWave * 0.02;
-	for ("_i") from 1 to _amount do {
+
+	{
+		private _class = _x select 0;
+		private _cost = _x select 1;
 		private _location = [bulwarkCity, BULWARK_RADIUS + 30, BULWARK_RADIUS + 150,1,0] call BIS_fnc_findSafePos;
-		_unit = [_classArray,_location] call DBW_spawnHostile;
+		_unit = [_class,_location] call DBW_spawnHostile;
 		private _setSkill = [_unit,_skill] call DBW_setSkill;
 		removeAllWeapons _unit;
-		_unit addEventHandler ["Killed", CreateHostiles_fnc_suiExplode];
-		private _init = [_unit,_scoreMulti] call DBW_initUnit;
-	};
+		_unit addEventHandler ["Killed", hostiles_fnc_suiExplode];
+		private _init = [_unit, _cost call CWS_getHostileScoreMultiplier] call DBW_initUnit;
+
+	}
+	forEach _infantryToSpawnWithCosts;
 	waveSpawned = true;
 };
 
@@ -78,7 +83,7 @@ DBW_SWITCHAROOWAVE = { //want to add garrisoned units in surrounding buildings. 
 			};
 		} foreach _allHPs;
 		_respawnTickets = [west] call BIS_fnc_respawnTickets;
-		if (count (_allHPs - _deadUnconscious) <= 0 && _respawnTickets <= 0) then {
+		if ((count (_allHPs - _deadUnconscious)) <= 0 && (_respawnTickets <= 0)) then {
 			sleep 1;
 
 			//Check that Players have not been revived
@@ -88,9 +93,9 @@ DBW_SWITCHAROOWAVE = { //want to add garrisoned units in surrounding buildings. 
 					_deadUnconscious pushBack _x;
 				};
 			} foreach _allHPs;
-			if (count (_allHPs - _deadUnconscious) <= 0 && _respawnTickets <= 0) then {
+			if ((count (_allHPs - _deadUnconscious)) <= 0 && (_respawnTickets <= 0)) then {
 				sleep 1;
-				if (count (_allHPs - _deadUnconscious) <= 0 && _respawnTickets <= 0) then {
+				if ((count (_allHPs - _deadUnconscious)) <= 0 && (_respawnTickets <= 0)) then {
 					missionFailure = true;
 				};
 			};
@@ -104,30 +109,29 @@ DBW_DEMINEWAVE = {
 	execVM "hostiles\droneFire.sqf";
 	["SpecialWarning",["Look up! They're sending drones!"]] remoteExec ["BIS_fnc_showNotification", 0];
 	["Alarm"] remoteExec ["playSound", 0];
-	for "_i" from 1 to 30 do {
-		if ((floor random 2) == 0 && droneCount <= 15) then {
-			droneCount = droneCount + 1;
-			_aicrew = creategroup EAST;
-			_location = [bulwarkCity, BULWARK_RADIUS + 30, BULWARK_RADIUS + 150,1,0] call BIS_fnc_findSafePos;
-			_drone = [_location, 50, "C_IDAP_UAV_06_antimine_F", _aicrew] call BIS_fnc_spawnVehicle;
-			droneSquad pushback _aicrew;
-			_wp1 = _aicrew addWaypoint [position bulwarkBox, 0];
-			_wp1 setWaypointType "SAD";
-			_leadah = leader _aicrew;
-			_leadah flyInHeight 30;
-			_leadah setSkill 1;
-			sleep 0.5;
-			mainZeus addCuratorEditableObjects [[_drone select 0], true];
-			_leadah addEventHandler ["Hit", killPoints_fnc_hit];
-			_leadah addEventHandler ["Killed", {
-				params ["_unit", "_killer", "_instigator", "_useEffects"];
-				call killPoints_fnc_killed;
-				_scriptedCharge = "HandGrenade" createVehicle (getPos _unit);
-				_scriptedCharge setdamage 1;
-				deleteVehicle _unit;
-			}];
-			_leadah setVariable ["killPointMulti", HOSTILE_CAR_POINT_SCORE];
-		};
+	private _numDrones = ceil (attkWave / 3);
+	for "_i" from 1 to _numDrones do {
+		droneCount = droneCount + 1;
+		_aicrew = creategroup EAST;
+		_location = [bulwarkCity, BULWARK_RADIUS + 30, BULWARK_RADIUS + 150,1,0] call BIS_fnc_findSafePos;
+		_drone = [_location, 50, "C_IDAP_UAV_06_antimine_F", _aicrew] call BIS_fnc_spawnVehicle;
+		droneSquad pushback _aicrew;
+		_wp1 = _aicrew addWaypoint [position bulwarkBox, 0];
+		_wp1 setWaypointType "SAD";
+		_leadah = leader _aicrew;
+		_leadah flyInHeight 30;
+		_leadah setSkill 1;
+		sleep 0.5;
+		mainZeus addCuratorEditableObjects [[_drone select 0], true];
+		_leadah addEventHandler ["Hit", killPoints_fnc_hit];
+		_leadah addEventHandler ["Killed", {
+			params ["_unit", "_killer", "_instigator", "_useEffects"];
+			[_unit, _killer, _instigator] call killPoints_fnc_killed;
+			_scriptedCharge = "HandGrenade" createVehicle (getPos _unit);
+			_scriptedCharge setdamage 1;
+			deleteVehicle _unit;
+		}];
+		_leadah setVariable ["killPointMulti", HOSTILE_CAR_POINT_SCORE];
 	};
 	[] call DBW_NORMALWAVE;
 };
@@ -141,7 +145,7 @@ DBW_DEFECTORWAVE = {
 	_skill = attkWave * 0.02;
 	for ("_i") from 1 to _amount do {
 		private _location = [bulwarkCity, BULWARK_RADIUS + 30, BULWARK_RADIUS + 150,1,0] call BIS_fnc_findSafePos;
-		private _unit = [LIST_DEFECTOR_CLASS,_location] call DBW_spawnHostile;
+		private _unit = [selectRandom LIST_DEFECTOR_CLASS,_location] call DBW_spawnHostile;
 		private _setSkill = [_unit,_skill] call DBW_setSkill;
 		private _init = [_unit,_scoreMulti] call DBW_initUnit;
 	};
@@ -151,72 +155,85 @@ DBW_DEFECTORWAVE = {
 DBW_MGWAVE = {
 	["SpecialWarning",["MG Wave, take cover!"]] remoteExec ["BIS_fnc_showNotification", 0];
 	["Alarm"] remoteExec ["playSound", 0];
-	[] call DBW_determineAndSpawnIfVehicleWave;
-	[] call DBW_getHostileListsAndKillMulti params ["_classArray","_scoreMulti"];
-	_amount = call DBW_getHostileAmount;
+
+	_infantryToSpawnWithCosts = attkWave call hostiles_fnc_getInfantryForWave;
 	_skill = attkWave * 0.02;
-	for ("_i") from 1 to _amount do {
+	{
+		private _class = _x select 0;
+		private _cost = _x select 1;
 		private _location = [bulwarkCity, BULWARK_RADIUS + 30, BULWARK_RADIUS + 150,1,0] call BIS_fnc_findSafePos;
-		_unit = [_classArray,_location] call DBW_spawnHostile;
+		private _unit = [_class,_location] call DBW_spawnHostile;
 		private _setSkill = [_unit,_skill] call DBW_setSkill;
-		private _init = [_unit,_scoreMulti] call DBW_initUnit;
-		private _giveSniper = [_unit,LOOT_WEAPON_MG_POOL] call DBW_giveRandPriWeap;
-	};
+		private _init = [_unit, _cost call CWS_getHostileScoreMultiplier] call DBW_initUnit;
+		private _giveSniper = [_unit,List_MG] call DBW_giveRandPriWeap;
+	}
+	forEach _infantryToSpawnWithCosts;
+
 	waveSpawned = true;
 };
 
 DBW_SNIPERWAVE = {
 	["SpecialWarning",["Sniper Wave, take cover!"]] remoteExec ["BIS_fnc_showNotification", 0];
 	["Alarm"] remoteExec ["playSound", 0];
-	[] call DBW_determineAndSpawnIfVehicleWave;
-	[] call DBW_getHostileListsAndKillMulti params ["_classArray","_scoreMulti"];
-	_amount = call DBW_getHostileAmount;
+
+	_infantryToSpawnWithCosts = attkWave call hostiles_fnc_getInfantryForWave;
 	_skill = attkWave * 0.02;
-	for ("_i") from 1 to _amount do {
+	{
+		private _class = _x select 0;
+		private _cost = _x select 1;
 		private _location = [bulwarkCity, BULWARK_RADIUS + 30, BULWARK_RADIUS + 150,1,0] call BIS_fnc_findSafePos;
-		_unit = [_classArray,_location] call DBW_spawnHostile;
+		private _unit = [_class,_location] call DBW_spawnHostile;
 		private _setSkill = [_unit,_skill] call DBW_setSkill;
-		private _init = [_unit,_scoreMulti] call DBW_initUnit;
-		private _giveSniper = [_unit,LOOT_WEAPON_SNIPER_POOL] call DBW_giveRandPriWeap;
-	};
+		private _init = [_unit, _cost call CWS_getHostileScoreMultiplier] call DBW_initUnit;
+		private _giveSniper = [_unit,List_Sniper] call DBW_giveRandPriWeap;
+	}
+	forEach _infantryToSpawnWithCosts;
+
 	waveSpawned = true;
 };
 
 DBW_NORMALWAVE = {
 	[] call DBW_determineAndSpawnIfVehicleWave;
-	[] call DBW_getHostileListsAndKillMulti params ["_classArray","_scoreMulti"];
-	_amount = call DBW_getHostileAmount;
+
+	_infantryToSpawnWithCosts = attkWave call hostiles_fnc_getInfantryForWave;
 	_skill = attkWave * 0.02;
-	for ("_i") from 1 to _amount do {
+	{
+		private _class = _x select 0;
+		private _cost = _x select 1;
 		private _location = [bulwarkCity, BULWARK_RADIUS + 30, BULWARK_RADIUS + 150,1,0] call BIS_fnc_findSafePos;
-		_unit = [_classArray,_location] call DBW_spawnHostile;
+		_unit = [_class,_location] call DBW_spawnHostile;
 		private _setSkill = [_unit,_skill] call DBW_setSkill;
-		private _init = [_unit,_scoreMulti] call DBW_initUnit;
+		private _init = [_unit, _cost call CWS_getHostileScoreMultiplier] call DBW_initUnit;
 		if (RANDOM_WEAPONS) then {
 			[_unit,List_Primaries] call DBW_giveRandPriWeap;
 		};
-	};
+	}
+	forEach _infantryToSpawnWithCosts;
+
 	waveSpawned = true;
 };
 
 DBW_PISTOLWAVE = {
 	["TaskAssigned",["In-coming","Wave " + str attkWave]] remoteExec ["BIS_fnc_showNotification", 0];
-	[] call DBW_getHostileListsAndKillMulti params ["_classArray","_scoreMulti"];
-	_amount = call DBW_getHostileAmount;
-	_skill = attkWave * 0.02;
-	for ("_i") from 1 to _amount do {
-		private _location = [bulwarkCity, BULWARK_RADIUS + 30, BULWARK_RADIUS + 150,1,0] call BIS_fnc_findSafePos;
-		_unit = [_classArray,_location] call DBW_spawnHostile;
-		private _setSkill = [_unit,_skill] call DBW_setSkill;
-		private _init = [_unit,_scoreMulti] call DBW_initUnit;
-		private _randWeap = [_unit,LOOT_WEAPON_HANDGUN_POOL] call DBW_giveRandSecWeap;
-		if ((floor random 3) == 1) then {
-			_unit additem "FirstAidKit";
-		};
 
-	};
+	_infantryToSpawnWithCosts = attkWave call hostiles_fnc_getInfantryForWave;
+	_skill = attkWave * 0.02;
+	{
+		private _class = _x select 0;
+		private _cost = _x select 1;
+		private _location = [bulwarkCity, BULWARK_RADIUS + 30, BULWARK_RADIUS + 150,1,0] call BIS_fnc_findSafePos;
+		_unit = [_class,_location] call DBW_spawnHostile;
+		private _setSkill = [_unit,_skill] call DBW_setSkill;
+		private _init = [_unit, _cost call CWS_getHostileScoreMultiplier] call DBW_initUnit;
+		private _randWeap = [_unit,List_Secondaries] call DBW_giveRandSecWeap;
+		if ((floor random 3) == 1) then {
+			_unit additem (call bulwark_fnc_getFAKClass);
+		};
+	}
+	forEach _infantryToSpawnWithCosts;
 	waveSpawned = true;
 };
+
 //Requires IFA3_AIO_LITE start
 DBW_FLAMEWAVE = {
 	["SpecialWarning",["FLAMETHROWER WAVE, INCOMING!"]] remoteExec ["BIS_fnc_showNotification", 0];
@@ -227,7 +244,7 @@ DBW_FLAMEWAVE = {
 	_skill = attkWave * 0.02;
 	for ("_i") from 1 to _amount do {
 		private _location = [bulwarkCity, BULWARK_RADIUS + 30, BULWARK_RADIUS + 150,1,0] call BIS_fnc_findSafePos;
-		_unit = [_classArray,_location] call DBW_spawnHostile;
+		_unit = [selectRandom _classArray,_location] call DBW_spawnHostile;
 		private _setSkill = [_unit,_skill] call DBW_setSkill;
 		private _init = [_unit,_scoreMulti] call DBW_initUnit;
 			removeAllWeapons _unit;
@@ -237,7 +254,7 @@ DBW_FLAMEWAVE = {
 			_unit addWeapon "LIB_M2_Flamethrower";
 			_unit addPrimaryWeaponItem "LIB_M2_Flamethrower_Mag";
 			_unit addBackpack "B_LIB_US_M2Flamethrower";
-			_unit addItemToVest "FirstAidKit";
+			_unit addItemToVest (call bulwark_fnc_getFAKClass);
 			for "_i" from 1 to 5 do {_unit addItemToVest "LIB_No77";};
 			for "_i" from 1 to 20 do {_unit addItemToBackpack "LIB_No77";};
 			_unit enableStamina false;
@@ -254,7 +271,7 @@ DBW_PTRDWAVE = {
 	_skill = attkWave * 0.02;
 	for ("_i") from 1 to _amount do {
 		private _location = [bulwarkCity, BULWARK_RADIUS + 30, BULWARK_RADIUS + 150,1,0] call BIS_fnc_findSafePos;
-		_unit = [_classArray,_location] call DBW_spawnHostile;
+		_unit = [selectRandom _classArray,_location] call DBW_spawnHostile;
 		private _setSkill = [_unit,_skill] call DBW_setSkill;
 		private _init = [_unit,_scoreMulti] call DBW_initUnit;
 		private _givePTRD = [_unit,["LIB_PTRD"]] call DBW_giveRandPriWeap;
