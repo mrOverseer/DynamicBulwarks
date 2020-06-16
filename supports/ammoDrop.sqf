@@ -23,7 +23,7 @@ if (_pWeap != "") then {
     case "srifle": {_amount = magSNIPER select 1;};
     case "arifle": {_amount = magASSAULT select 1;};
     case "smg": {_amount = magSMG select 1;};
-    case "sgun": {_amount = magSMG select 1;};	//shotguns included in SMG array since there aren't that many
+    case "sgun": {_amount = magSMG select 1;};
     case "mg": {_amount = magMG select 1;};
   };
   _ammoPlayer addMagazines [_ammoToAdd, _amount];

@@ -2,7 +2,7 @@
 
 Fork from DynamicBulwarks develop branch.
 
-Require:
+Require for custom preset:
 
 - ACE
 - CUP Weapons
