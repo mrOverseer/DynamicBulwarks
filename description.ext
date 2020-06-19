@@ -1,4 +1,4 @@
-onLoadMission = "Hold out as long as you can!";
+OnLoadMission = "Modified by Overseer and Antray100";
 onLoadIntro = "Defend yourself";
 onLoadName = "Dynamic Bulwarks";
 briefingName = "Dynamic Bulwarks";
@@ -15,7 +15,7 @@ ReviveMode = 1;
 ReviveUnconsciousStateMode = 0;
 ReviveRequiredItems = 0;
 ReviveRequiredTrait = 0;
-ReviveBleedOutDelay = 120;
+ReviveBleedOutDelay = 180;
 
 corpseManagerMode = 2;
 corpseLimit = 5;
@@ -51,6 +51,8 @@ class CfgFunctions
 
 	#include "server\Functions.hpp"
 	#include "player\Functions.hpp"
+	
+	#include "platformCargo\Functions.hpp"
 };
 
 class CfgRemoteExec
@@ -105,7 +107,7 @@ class CfgDebriefing
 {
 	class End1
 	{
-		title = [END];
+		title = "[END]";
 		subtitle = "You were wiped out";
 		description = "Game Over";
 		pictureBackground = "";
@@ -204,6 +206,13 @@ class CfgSounds
 		sound[] = {"\sound\teleport.ogg", 5, 1};
 		titles[] = {0,""};
 	};
+
+	class platformCargo
+	{
+		name = "Platform Cargo";
+		sound[] = {"@A3\sounds_f\structures\doors\ServoRamp\ServoRampSlam.wss", 10, 1};
+		titles[] = {};
+	};
 };
 
 //Notification for Special Waves
@@ -221,3 +230,6 @@ class CfgNotifications
 
 #include "bulwark\dialog.hpp"
 #include "lobby\dialog.hpp"
+
+#include "bulwark\transferDialog.hpp"
+#include "platformCargo\dialog.hpp"

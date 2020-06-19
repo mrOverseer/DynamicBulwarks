@@ -17,6 +17,6 @@ sleep 20;
 
 while {alive mortarGunner} do {
   _bulwarkArtPos = getPos bulwarkBox;
-  specMortar doArtilleryFire [[(_bulwarkArtPos select 0) + (random [-45, 0, 45]), (_bulwarkArtPos select 1) + (random [-45, 0, 45]), _bulwarkArtPos select 2], "8Rnd_82mm_Mo_shells", 1];
+  specMortar doArtilleryFire [[(_bulwarkArtPos select 0) + (random [-90, 0, 90]), (_bulwarkArtPos select 1) + (random [-90, 0, 90]), _bulwarkArtPos select 2], "8Rnd_82mm_Mo_shells", random 3];
   sleep 30;
 };

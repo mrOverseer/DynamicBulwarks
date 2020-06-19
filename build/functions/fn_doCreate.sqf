@@ -32,9 +32,16 @@ if (_invincible == 1) then {
 };
 
 // If it's a container, make sure it's empty
-clearItemCargoGlobal _shopVehicle;
-clearWeaponCargoGlobal _shopVehicle;
-clearMagazineCargoGlobal _shopVehicle;
-clearBackpackCargoGlobal _shopVehicle;
+if ("Box_NATO_AmmoOrd_F" != _shopClass && "ACE_Box_Misc" != _shopClass) then {
+    clearItemCargoGlobal _shopVehicle;
+    clearWeaponCargoGlobal _shopVehicle;
+    clearMagazineCargoGlobal _shopVehicle;
+    clearBackpackCargoGlobal _shopVehicle;
+};
+
+if (PC_CLASS_NAME == _shopClass) then {
+    PC_START_POSITION pushBack [str _shopVehicle splitstring ": " select 1, getPosATL _shopVehicle];
+    publicVariable "PC_START_POSITION";
+};
 
 [_player, _shopVehicle, [0,_VecRadius + 1.5,0.02], _shopDir] call build_fnc_doPickup;

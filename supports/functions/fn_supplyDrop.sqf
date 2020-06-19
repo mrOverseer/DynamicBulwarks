@@ -66,6 +66,7 @@ _supplyBox = createVehicle ["Land_WoodenCrate_01_F", [0,0,0], [], 0, "CAN_COLLID
 _supplyBox attachTo [_parachute, [0,0,0]];
 _supplyBox allowDamage false;
 [_supplyBox, _cargo] remoteExec ["addAction", 0, true];
+[_supplyBox, ["<t color='#00ffff'>" + "Pickup", { _this call bulwark_fnc_moveBox; },"",1,false,false,"true","true",2.5]] remoteExec ["addAction", 0, true];
 
 
 

@@ -30,7 +30,11 @@ private _defaultBulwarkParams = [
 			[1, "WW2 (IFA3_AIO_LITE)", 1],
 			[2, "Global Mobilization", 2],
 			[3, "WW2 Winter (IFA_AIO_LITE)", 3],
-			[4, "Custom", 4]
+			[4, "Custom", 4],
+			[5, "CUP ACE", 5],
+			[6, "CUP AFRF", 6],
+			[7, "CUP TAKI", 7],
+			[8, "CUP SLA", 8]
 		],
 		0, 
 		"Selects from among the set of advanced, detailed mission parameters not present in this list"

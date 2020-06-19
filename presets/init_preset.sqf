@@ -8,5 +8,9 @@ switch (presetParameter) do {
 	case 2: { call compile preprocessFileLineNumbers "presets\gm.sqf";};
 	case 3: { call compile preprocessFileLineNumbers "presets\lib_winter.sqf";};
 	case 4: { call compile preprocessFileLineNumbers "presets\custom.sqf";};
+	case 5: { call compile preprocessFileLineNumbers "presets\cup_ace.sqf";};
+	case 6: { call compile preprocessFileLineNumbers "presets\cup_afrf.sqf";};
+	case 7: { call compile preprocessFileLineNumbers "presets\cup_taki.sqf";};
+	case 8: { call compile preprocessFileLineNumbers "presets\cup_sla.sqf";};
 
 };
