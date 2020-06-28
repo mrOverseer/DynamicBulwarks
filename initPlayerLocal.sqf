@@ -7,8 +7,8 @@ call compile preprocessFileLineNumbers "lobby\lobby.sqf";
 
 // Lower recoil, lower sway, remove stamina on respawn
 CWS_ResetStaminaRecoil = {
-    player setCustomAimCoef 0.5;
-    player setUnitRecoilCoefficient 0.8;
+    player setCustomAimCoef 0.2;
+    player setUnitRecoilCoefficient 0.5;
     player enableStamina FALSE;
 };
 
