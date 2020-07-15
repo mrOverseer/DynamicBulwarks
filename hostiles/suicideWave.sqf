@@ -9,7 +9,7 @@ while {_wave == attkWave} do {
     if (side _x == east) then {
       _thisAI = _x;
       {
-        if (((_thisAI distance2D _x) < 10) && (alive _thisAI)) then {
+        if (((_thisAI distance2D _x) < 15) && (alive _thisAI)) then {
           _thisAI setDamage 1;
         }
       } forEach _allHPs;

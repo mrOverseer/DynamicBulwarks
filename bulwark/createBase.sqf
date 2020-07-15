@@ -53,8 +53,11 @@ while {_isWater} do {
 
 publicVariable "bulwarkCity";
 
-//bulwarkBox addWeaponCargoGlobal["hgun_P07_F",10];
-//bulwarkBox addMagazineCargoGlobal ["16Rnd_9x21_Mag",20];
+bulwarkBox addWeaponCargoGlobal["hgun_P07_F", random 3];
+bulwarkBox addMagazineCargoGlobal ["30Rnd_9x21_Mag", random 4];
+bulwarkBox addBackpackCargoGlobal ["B_AssaultPack_Base", random 2];
+bulwarkBox addBackpackCargoGlobal ["ACE_EarPlugs", random 6];
+bulwarkBox addItemCargoGlobal ["ItemMap", 2];
 if(BULWARK_MEDIKITS > 0) then {
 	bulwarkBox addItemCargoGlobal [call bulwark_fnc_getMedikitClass, BULWARK_MEDIKITS];
 };
@@ -76,6 +79,7 @@ format ["Configuring Bulwark at Location: %1 City: %2", bulwarkRoomPos, bulwarkC
 		[false] remoteExec ['disableUserInput', _player];
 	};
 ","",1,false,false,"true","true",2.5]] remoteExec ["addAction", 0, true];
+[bulwarkBox, ["<t color='#ffa500'>" + "Transfer points", "[] spawn bulwark_fnc_transferGui; ShopCaller = _this select 1","",1.5,false,false,"true","true",2.5]] remoteExec ["addAction", 0, true];
 
 //Add Bulwark Box to Zeus
 mainZeus addCuratorEditableObjects [[bulwarkBox], true];
@@ -83,7 +87,7 @@ mainZeus addCuratorEditableObjects [[bulwarkBox], true];
 //Add EH for text to explain the FAK to Medkit feature
 [bulwarkBox, ["ContainerOpened", {
 	_playerId = _this select 1;
-	["<t size = '.5'>Place 15 FAKs into the Bulwark to convert them into a Medikit</t>", 0, 1, 60, 0] remoteExec ["BIS_fnc_dynamicText", _playerId];
+	["<t size = '.5'>Place 5 FAKs into the Bulwark to convert them into a Medikit</t>", 0, 1, 60, 0] remoteExec ["BIS_fnc_dynamicText", _playerId];
 }]] remoteExec ["addEventHandler", 0, true];
 [bulwarkBox, ["ContainerClosed", {
 	_playerId = _this select 1;

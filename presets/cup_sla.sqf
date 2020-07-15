@@ -6,29 +6,14 @@
 **/
 /* MOD FILTER */
 modTag = []; //limits loot and vehicles to a specific mod. Mods usually have a tag within their class names, use that. For example modTag = ["LIB"] would only spawn Iron Front Weapons. Can use multiple for example:modTag = ["LIB,"NORTH"];
-/* Attacker Waves */
-// Use group class names - To leave empty do: HOSTILE_LEVEL_1 = [];
-HOSTILE_LEVEL_1 = ["CUP_O_SLA_InfantrySection_Militia"];                                       //wave 0
-HOSTILE_LEVEL_2 = ["CUP_O_SLA_InfantrySquad_Desert","CUP_O_SLA_InfantrySection_Militia"];                        //wave 5
-HOSTILE_LEVEL_3 = ["CUP_O_SLA_InfantrySquad_Desert","CUP_O_SLA_InfantrySection_Militia","CUP_I_RACS_InfantrySquad"];                        //wave 10
-HOSTILE_LEVEL_4 = ["CUP_I_RACS_RoyalCommandos","CUP_O_SLA_InfantrySquad_Desert","CUP_O_SLA_InfantrySection_Militia","CUP_I_RACS_InfantrySquad"];         //wave 15
-DEFECTOR_CLASS = ["CUP_B_US_Army_Team"];          //defector special wave units
-PARATROOP_CLASS = ["CUP_B_US_Army_DeltaForceTeam"];         //friendly units called in via support
 
+/* Attacker Waves */
 //Unit Whitelist - unit classnames are expected for example: HOSTILE_LEVEL_1_WHITELIST = ["B_Soldier_A_F","B_support_MG_F"];
-HOSTILE_LEVEL_1_WHITELIST = []; //adds these units to the hostile levels, if you only want to use the whitelist and not the above groups, to leave empty do [];
-HOSTILE_LEVEL_2_WHITELIST = [];
-HOSTILE_LEVEL_3_WHITELIST = [];
-HOSTILE_LEVEL_4_WHITELIST = [];
-DEFECTOR_CLASS_WHITELIST = [];
-PARATROOP_CLASS_WHITELIST = [];
-//Vehicle Whitelist
-/* 0 = Adds Whitelist Vehicles to spawn. */
-/* 1 = Only Whitelist Vehicles will spawn */
-VEHICLE_WHITELIST_MODE = 1;
-HOSTILE_ARMED_CARS_WHITELIST = ["CUP_O_UAZ_AGS30_SLA","CUP_O_UAZ_MG_SLA","CUP_I_LR_MG_RACS","CUP_I_M113_RACS"]; // HOSTILE_ARMED_CARS_WHITELIST = []; to leave empty
-HOSTILE_ARMOUR_WHITELIST = ["CUP_O_BMP2_SLA","CUP_O_BTR60_SLA","CUP_O_BRDM2_SLA","CUP_O_BMP_HQ_sla", "CUP_I_AAV_RACS", "CUP_I_LAV25_RACS", "CUP_I_LAV25M240_RACS"];
-//Vehicle Blacklist
+HOSTILE_INFANTRY_WHITELIST = ["CUP_I_RACS_RoyalCommandos","CUP_O_SLA_InfantrySquad_Desert","CUP_O_SLA_InfantrySection_Militia","CUP_I_RACS_InfantrySquad"];
+DEFECTOR_CLASS_WHITELIST = ["CUP_B_US_Army_Team"]; //defector special wave units
+PARATROOP_CLASS_WHITELIST = ["CUP_B_US_Army_DeltaForceTeam"]; //friendly units called in via support
+
+HOSTILE_VEHICLE_WHITELIST = ["CUP_O_UAZ_AGS30_SLA","CUP_O_UAZ_MG_SLA","CUP_I_LR_MG_RACS","CUP_I_M113_RACS","CUP_O_BMP2_SLA","CUP_O_BTR60_SLA","CUP_O_BRDM2_SLA","CUP_O_BMP_HQ_sla", "CUP_I_AAV_RACS", "CUP_I_LAV25_RACS", "CUP_I_LAV25M240_RACS"];
 HOSTILE_VEHICLE_BLACKLIST = [];
 
 /* LOOT */
@@ -89,6 +74,7 @@ HOSTILE_LEVEL_1_POINT_SCORE = 0.75;
 HOSTILE_LEVEL_2_POINT_SCORE = 1;
 HOSTILE_LEVEL_3_POINT_SCORE = 1.50;
 HOSTILE_LEVEL_4_POINT_SCORE = 1.75;
+HOSTILE_INFANTRY_POINT_SCORE = 0.75;
 HOSTILE_CAR_POINT_SCORE = 2;
 HOSTILE_ARMOUR_POINT_SCORE = 4;
 

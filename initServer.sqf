@@ -5,3 +5,18 @@ factionOptions = _hostileFactions;
 publicVariable "factionOptions";
 lootFactionOptions = _lootFactions;
 publicVariable "lootFactionOptions";
+
+/* List points for transfer */
+BULWARK_TRANSFERPOINT = [
+    100,
+    500,
+    1000,
+    5000,
+    10000,
+    20000
+];
+
+publicVariable "BULWARK_TRANSFERPOINT";
+
+// Platform cargo
+[] execVM "platformCargo\init.sqf";

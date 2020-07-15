@@ -9,7 +9,7 @@ while {!(_object isEqualTo objNull) && !_isHeld} do {
         _foundAIArr = [];
     };
     _loopCount = _loopCount + 1;
-    _objRadius = (_object getVariable "Radius") + 1;
+    _objRadius = (_object getVariable "Radius") + 3;
     _nearAI = _object nearEntities _objRadius;
     _isPlaced = _object getVariable "buildItemHeld";
     {

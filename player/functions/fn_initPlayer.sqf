@@ -202,7 +202,7 @@ Kill enemies to earn points to spend at the Bulwark Box Shop (in the action menu
 Allies will make regular ammo drops! Initially marked with blue smoke, find these wooden crates to get much needed ammo for your weapon.
 <br />
 <br />
-If you are knocked unconscious but you have a Medikit in your inventory you will be automatically resurected within 10 seconds. 15 FAKs can be converted into a Medikit at the Bulwark Box.
+If you are knocked unconscious but you have a Medikit in your inventory you will be automatically resurected within 10 seconds. 5 FAKs can be converted into a Medikit at the Bulwark Box.
 <br />
 <br />
 <font color='#FFCC00'>You won't survive this fight but take as many of the bastards with you as you can!</font>"]];
@@ -233,7 +233,7 @@ player addEventHandler ["Put", {
                 if (_x in _fakEquivalents) then {
                     private _storedCount = (_cargoItems select 1) select _forEachIndex;
                     format ["Found %1 %2 in bulwark", _storedCount, _x] call shared_fnc_log;
-                    private _countToRemove = _storedCount min (15 - _fakCount);
+                    private _countToRemove = _storedCount min (5 - _fakCount);
                     _fakCount = _fakCount + _countToRemove;
                     if (_countToRemove > 0) then {
                         _itemsToRemove pushBack [_x, _countToRemove];
@@ -241,7 +241,7 @@ player addEventHandler ["Put", {
                 };
             } forEach (_cargoItems select 0);
 
-            if (_fakCount == 15) then {
+            if (_fakCount == 5) then {
                 "Converting FAKs to Medikit" call shared_fnc_log;
                 {
                     [bulwarkBox, _x select 0, _x select 1, false] call CBA_fnc_removeItemCargo;
