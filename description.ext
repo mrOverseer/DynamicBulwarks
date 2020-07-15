@@ -12,6 +12,7 @@ respawnOnStart = -1;
 respawnDialog = 0;
 respawnTemplates[] = {"Base"};
 ReviveMode = 1;
+ReviveUnconsciousStateMode = 0;
 ReviveRequiredItems = 0;
 ReviveRequiredTrait = 0;
 ReviveBleedOutDelay = 120;
@@ -77,7 +78,7 @@ class CfgRemoteExec
 		class lobby_fnc_startGame {};
 		class server_fnc_startServer {};
 		class server_fnc_registerPlayer {};
-		class player_fnc_startPlayer {};
+		class player_fnc_reassignCurator {};
 
 		class killPoints_fnc_change {};
 		class killPoints_fnc_add {};
